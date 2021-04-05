@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "name": "Zero",
+      "description": "Description of mission 'Zero'",
+      "nextNodes": [1, 2, 3]
+    },
+    {
+      "id": 1,
+      "name": "One",
+      "description": "Description of mission 'One'",
+      "nextNodes": [4, 5]
+    },
+    {
+      "id": 2,
+      "name": "Two",
+      "description": "Description of mission 'Two'",
+      "nextNodes": [6, 7]
+    },
+    {
+      "id": 3,
+      "name": "Three",
+      "description": "Description of mission 'Three'",
+      "nextNodes": [8, 9, 10]
+    },
+    {
+      "id": 4,
+      "name": "Four",
+      "description": "Description of mission 'Four'",
+      "nextNodes": [11]
+    },
+    {
+      "id": 5,
+      "name": "Five",
+      "description": "Description of mission 'Five'",
+      "nextNodes": [12]
+    },
+    {
+      "id": 6,
+      "name": "Six",
+      "description": "Description of mission 'Six'",
+      "nextNodes": [11]
+    },
+    {
+      "id": 7,
+      "name": "Seven",
+      "description": "Description of mission 'Seven'",
+      "nextNodes": [12]
+    },
+    {
+      "id": 8,
+      "name": "Eight",
+      "description": "Description of mission 'Eight'",
+      "nextNodes": [14]
+    },
+    {
+      "id": 9,
+      "name": "Nine",
+      "description": "Description of mission 'Nine'",
+      "nextNodes": [13]
+    },
+    {
+      "id": 10,
+      "name": "Ten",
+      "description": "Description of mission 'Ten'",
+      "nextNodes": [13]
+    },
+    {
+      "id": 11,
+      "name": "Eleven",
+      "description": "Description of mission 'Eleven'",
+      "nextNodes": [14]
+    },
+    {
+      "id": 12,
+      "name": "Twelve",
+      "description": "Description of mission 'Twelve'",
+      "nextNodes": [14]
+    },
+    {
+      "id": 13,
+      "name": "Thirteen",
+      "description": "Description of mission 'Thirteen'",
+      "nextNodes": [14]
+    },
+    {
+      "id": 14,
+      "name": "Fourteen",
+      "description": "Description of mission 'Fourteen'",
+      "nextNodes": []
+    }
+  ]
+}

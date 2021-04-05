@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Vizualizer</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!-- <style>
+      .svgDiv{
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+      }
+    </style> -->
+  </head>
+  <body style="height: 100%; width: 100%">
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container" height=600>
+        <span class="navbar-brand"><button type= "button" class="btn btn-primary" id="createGraphBtn">Create Graph</button></span>
+        <span class="navbar-brand"><button type= "button" class="btn btn-primary" id="removeGraphBtn">Remove Graph</button></span>
+        <!--<span class="navbar-brand"><button type= "button" class="btn btn-primary" id="exportTreeBtn">Export Tree</button></span>-->
+      </div>
+    </div>
+    <hr><hr><hr>
+    <div>
+      <svg></svg>
+    </div>
+    <div id="content">
+      <script src='./index.js'></script>
+    </div>
+  </body>
+</html>
