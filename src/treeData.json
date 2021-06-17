@@ -1,26 +1,26 @@
 {
   "name": "1",
-  "description": "",
+  "description": "Description of mission 1",
   "children": [
-    {"name": "11", "children": [
-      {"name": "111"},
-      {"name": "112"}
+    {"name": "11", "description": "Description of mission 11", "children": [
+      {"name": "111", "description": "Description of mission 111"},
+      {"name": "112", "description": "Description of mission 112", "children": [
+        {"name": "111", "description": "Description of mission 1121"},
+        {"name": "112", "description": "Description of mission 1122"},
+        {"name": "112", "description": "Description of mission 1123"}
+        ]}
       ]},
-    {"name": "12", "children": [
-      {"name": "121"},
-      {"name": "122"}
+    {"name": "12", "description": "Description of mission 12", "children": [
+      {"name": "121", "description": "Description of mission 121"},
+      {"name": "122", "description": "Description of mission 122"}
       ]},
-    {"name": "13", "children": [
-      {"name": "131"},
-      {"name": "132"}
-      ]},
-    {"name": "14", "children": [
-      {"name": "141"},
-      {"name": "142"}
-      ]},
-    {"name": "15", "children": [
-      {"name": "151"},
-      {"name": "152"}
+    {"name": "13", "description": "Description of mission 13", "children": [
+      {"name": "131", "description": "Description of mission 131", "children": [
+        {"name": "131", "description": "Description of mission 1311"},
+        {"name": "132", "description": "Description of mission 1312"}
+        ]},
+      {"name": "132", "description": "Description of mission 132"},
+      {"name": "133", "description": "Description of mission 133"}
       ]}
   ]
 }

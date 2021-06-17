@@ -1,5 +1,6 @@
 var d3 = require('d3', 'd3-scale', 'd3-scale-chromatic', 'd3-array', 'd3@6');
 var $ = require('jquery');
+var d3plus = require('d3plus');
 
 // function removeTree(){
 //   console.log("43");
@@ -15,6 +16,11 @@ var $ = require('jquery');
 var tree;
 var width;
 var height;
+var dx = 170;
+var dy = 800;
+var nodeXSpacing = 300;
+var nodeYSpacing = 500;
+var method;
 
 function removeTree(){
   tree = null;
@@ -25,26 +31,37 @@ function removeTree(){
       .remove()
 }
 
-function drawTree(){
-  d3.json("treeData.json")
-  .then(data => {
-    tree = d3.hierarchy(data)
-    console.log("data ", data);
-    console.log("tree ", tree);
-    const treeChart = chart();
-  });
+function drawTree(data, options){
+  tree = d3.hierarchy(data)
+  method = options.method;
+  dx = options.nodeWidth;
+  dy = options.nodeHeight;
+  nodeXSpacing = options.nodeXSpacing;
+  nodeYSpacing = options.nodeYSpacing;
+  // console.log("data ", data);
+  // console.log("tree ", tree);
+  const treeChart = chart();
 }
 
 function chart(){
   if(tree != null){
     var root = tree;
-    root.dx = 170;
-    root.dy = 400;
+    root.dx = dx + nodeXSpacing;
+    root.dy = dy + nodeYSpacing;
 
     qwe = root
     console.log("qwe", qwe);
 
-    root = d3.tree().nodeSize([root.dx, root.dy])(root);
+    switch (method) {
+      case "Tidy":
+        root = d3.tree().nodeSize([root.dx, root.dy])(root);
+        break;
+      case "Clusters":
+        root = d3.cluster().nodeSize([root.dx, root.dy])(root);
+        break;
+      default:
+
+    }
     let x0 = Infinity;
     let x1 = -x0;
     root.each(d => {
@@ -67,22 +84,22 @@ function chart(){
         .attr("width", "100%")
         .attr("height", "100%")
         .attr("viewBox", [0, 0, width, height])
+        .attr("preserveAspectRatio", "none");
 
-        const borderPath = svg.append("rect")
-       			.attr("x", 0)
-       			.attr("y", 0)
-       			.attr("height", height)
-       			.attr("width", width)
-       			.style("stroke", "#999999")
-       			.style("fill", "none")
-       			.style("stroke-width", 4);
+    // const borderPath = svg.append("rect")
+   	// 		.attr("x", 0)
+   	// 		.attr("y", 0)
+   	// 		.attr("height", height)
+   	// 		.attr("width", width)
+   	// 		.style("stroke", "#999999")
+   	// 		.style("fill", "none")
+   	// 		.style("stroke-width", 4);
 
     const g = svg.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 10)
         .attr("transform", `translate(${root.dy / 3},${root.dx - x0})`);
 
-    console.log("links ", root.links());
     const link = g.append("g")
       .attr("fill", "none")
       .attr("stroke", "#555")
@@ -94,8 +111,6 @@ function chart(){
         .attr("d", d3.linkHorizontal()
             .x(d => d.y)
             .y(d => d.x));
-
-    console.log("descendants", root.descendants());
 
     const node = g.append("g")
         .attr("stroke-linejoin", "round")
@@ -110,10 +125,10 @@ function chart(){
         .attr("stroke", "#DDD")
         .attr("stroke-width", 3)
         .attr("stroke-linejoin", "round")
-        .attr("x", -100)
-        .attr("y", -60)
-        .attr("width", 300)
-        .attr("height", 120)
+        .attr("x", dx / -2)
+        .attr("y", dy / -2)
+        .attr("width", dx)
+        .attr("height", dy)
         .attr("rx", 10)
         .attr("ry", 10);
 
@@ -122,26 +137,45 @@ function chart(){
         .attr("stroke", "#DDD")
         .attr("stroke-width", 3)
         .attr("stroke-linejoin", "round")
-        .attr("x", -100)
-        .attr("y", -60)
-        .attr("width", 300)
+        .attr("x", dx / -2)
+        .attr("y", dy / -2)
+        .attr("width", dx)
         .attr("height", 30)
         .attr("rx", 10)
         .attr("ry", 10);
 
     node.append("text")
-        .attr("x", 50)
-        .attr("y", -38)
+        .attr("x", 0)
+        .attr("y", dy / -2 + 25)
         .attr("text-anchor", "middle")
-        .attr("font-size", "20")
+        .attr("font-size", "24")
         .attr("font-weight", "500")
         .text(d => d.data.name)
       .clone(true).lower()
         .attr("stroke", "white");
 
+    node.append("text")
+        .text(d => d.data.description)
+        // .attr("class", "textwrap")
+        //.call(wrap, dy - 50)
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "20")
+        .attr("font-weight", "500")
+        //.attr("size", dy * 0.9)
+      .clone(true).lower()
+        .attr("stroke", "white");
+
+    // d3plus.textwrap()
+    //   .container(node)
+    //   .width(270)
+    //   .height(90)
+    //   .draw();
+
       svg.call(d3.zoom()
         .extent([[-width / 2, 0], [width, height]])
-        .scaleExtent([1, 4])
+        .scaleExtent([0.05, 4])
         //.translateExtent([[0, 0], [width, height / 2]])
         .on("zoom", zoomed));
 
@@ -162,6 +196,31 @@ function chart(){
   } else{
     console.log("null");
   }
+}
+
+function wrap(text, width) {
+    text.each(function() {
+        var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0, //<-- 0!
+        lineHeight = 1.2, // ems
+        x = text.attr("x") ? text.attr("x") : 50, //<-- include the x!
+        y = text.attr("y") ? text.attr("y") : 0,
+        dy = text.attr("dy") ? text.attr("dy") : 0; //<-- null check
+        tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em").attr("dx", "0em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").attr("dx", "0em").text(word);
+            }
+        }
+    });
 }
 
 function exportTree(){
@@ -196,8 +255,7 @@ function exportTree(){
 }
 
 module.exports = {
-  drawTree: drawTree,
-  removeTree: removeTree,
-  exportTree: exportTree,
-  chart: chart
+  DrawGraph: drawTree,
+  removeGraph: removeTree,
+  exportGraph: exportTree
 };

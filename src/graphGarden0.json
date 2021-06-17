@@ -4,91 +4,67 @@
       "id": 0,
       "name": "Zero",
       "description": "Descriptiion of mission 'Zero'",
-      "nextNodes": [1, 2, 3]
+      "nextNodes": [1]
     },
     {
       "id": 1,
       "name": "One",
       "description": "Descriptiion of mission 'One'",
-      "nextNodes": [4, 5]
+      "nextNodes": [2]
     },
     {
       "id": 2,
       "name": "Two",
       "description": "Descriptiion of mission 'Two'",
-      "nextNodes": [6, 7]
+      "nextNodes": [3]
     },
     {
       "id": 3,
       "name": "Three",
       "description": "Descriptiion of mission 'Three'",
-      "nextNodes": [8, 9, 10]
+      "nextNodes": [4]
     },
     {
       "id": 4,
       "name": "Four",
       "description": "Descriptiion of mission 'Four'",
-      "nextNodes": [11, 12, 15]
-    },
-    {
-      "id": 5,
-      "name": "Five",
-      "description": "Descriptiion of mission 'Five'",
-      "nextNodes": [13, 14]
-    },
-    {
-      "id": 6,
-      "name": "Six",
-      "description": "Descriptiion of mission 'Six'",
-      "nextNodes": [11, 15, 16]
+      "nextNodes": [7]
     },
     {
       "id": 7,
       "name": "Seven",
       "description": "Descriptiion of mission 'Seven'",
-      "nextNodes": [16, 17, 18]
+      "nextNodes": [8]
     },
     {
       "id": 8,
       "name": "Eight",
       "description": "Descriptiion of mission 'Eight'",
-      "nextNodes": [18, 19]
+      "nextNodes": [9, 10]
     },
     {
       "id": 9,
       "name": "Nine",
       "description": "Descriptiion of mission 'Nine'",
-      "nextNodes": [19]
+      "nextNodes": [12]
     },
     {
       "id": 10,
       "name": "Ten",
       "description": "Descriptiion of mission 'Ten'",
-      "nextNodes": [19]
-    },
-    {
-      "id": 11,
-      "name": "Eleven",
-      "description": "Descriptiion of mission 'Eleven'",
-      "nextNodes": [20]
+      "nextNodes": [13]
     },
     {
       "id": 12,
       "name": "Twelve",
       "description": "Descriptiion of mission 'Twelve'",
-      "nextNodes": [20]
+      "nextNodes": [15]
     },
     {
       "id": 13,
       "name": "Thirteen",
       "description": "Descriptiion of mission 'Thirteen'",
-      "nextNodes": [21]
-    },
-    {
-      "id": 14,
-      "name": "Fourteen",
-      "description": "Descriptiion of mission 'Fourteen'",
-      "nextNodes": [22]
+      "nextNodes": [16]
     },
     {
       "id": 15,
@@ -100,7 +76,7 @@
       "id": 16,
       "name": "Sixteen",
       "description": "Descriptiion of mission 'Sixteen'",
-      "nextNodes": [22]
+      "nextNodes": [17, 18]
     },
     {
       "id": 17,
@@ -112,198 +88,294 @@
       "id": 18,
       "name": "Eightteen",
       "description": "Descriptiion of mission 'Eightteen'",
-      "nextNodes": [23]
-    },
-    {
-      "id": 19,
-      "name": "Nineteen",
-      "description": "Descriptiion of mission 'Nineteen'",
-      "nextNodes": [24, 25, 26, 27, 28, 29]
-    },
-    {
-      "id": 20,
-      "name": "Twenty ",
-      "description": "Descriptiion of mission 'Twenty'",
-      "nextNodes": [30, 31, 32]
+      "nextNodes": [22]
     },
     {
       "id": 21,
       "name": "Twenty one",
       "description": "Descriptiion of mission 'Twenty one'",
-      "nextNodes": [32, 33, 34]
+      "nextNodes": [25]
     },
     {
       "id": 22,
       "name": "Twenty two",
       "description": "Descriptiion of mission 'Twenty two'",
-      "nextNodes": [35, 36, 37]
+      "nextNodes": [26]
     },
     {
       "id": 23,
       "name": "Twenty three",
       "description": "Descriptiion of mission Twenty three'",
-      "nextNodes": [38, 39, 40]
-    },
-    {
-      "id": 24,
-      "name": "Twenty four",
-      "description": "Descriptiion of mission 'Twenty four'",
-      "nextNodes": [41]
+      "nextNodes": [27]
     },
     {
       "id": 25,
       "name": "Twenty five",
       "description": "Descriptiion of mission 'Twenty five'",
-      "nextNodes": [41]
+      "nextNodes": [28]
     },
     {
       "id": 26,
       "name": "Twenty six",
       "description": "Descriptiion of mission 'Twenty six'",
-      "nextNodes": [41]
+      "nextNodes": [29]
     },
     {
       "id": 27,
       "name": "Twenty seven",
       "description": "Descriptiion of mission 'Twenty seven'",
-      "nextNodes": [41]
+      "nextNodes": [30]
     },
     {
       "id": 28,
       "name": "Twenty eight",
       "description": "Descriptiion of mission 'Twenty eight'",
-      "nextNodes": [41]
+      "nextNodes": [31]
     },
     {
       "id": 29,
       "name": "Twenty nine",
       "description": "Descriptiion of mission 'Twenty nine'",
-      "nextNodes": [41]
+      "nextNodes": [32]
     },
     {
       "id": 30,
       "name": "Thirty",
       "description": "Descriptiion of mission 'Thirty'",
-      "nextNodes": [42, 44]
+      "nextNodes": [33]
     },
     {
       "id": 31,
       "name": "Thirty one",
       "description": "Descriptiion of mission 'Thirty one'",
-      "nextNodes": [42, 43]
+      "nextNodes": [32]
     },
     {
       "id": 32,
       "name": "Thirty two",
       "description": "Descriptiion of mission 'Thirty two'",
-      "nextNodes": [43, 44]
+      "nextNodes": [36]
     },
     {
       "id": 33,
       "name": "Thirty three",
       "description": "Descriptiion of mission 'Thirty three'",
-      "nextNodes": [43, 45]
-    },
-    {
-      "id": 34,
-      "name": "Thirty four",
-      "description": "Descriptiion of mission 'Thirty four'",
-      "nextNodes": [46]
-    },
-    {
-      "id": 35,
-      "name": "Thirty five",
-      "description": "Descriptiion of mission 'Thirty five'",
-      "nextNodes": [45, 46]
+      "nextNodes": [37]
     },
     {
       "id": 36,
       "name": "Thirty six",
       "description": "Descriptiion of mission 'Thirty six'",
-      "nextNodes": [47, 49]
+      "nextNodes": [38]
     },
     {
       "id": 37,
       "name": "Thirty seven",
       "description": "Descriptiion of mission 'Thirty seven'",
-      "nextNodes": [47]
+      "nextNodes": [32]
     },
     {
       "id": 38,
       "name": "Thirty eight",
       "description": "Descriptiion of mission 'Thirty eight'",
-      "nextNodes": [47]
-    },
-    {
-      "id": 39,
-      "name": "Thirty nine",
-      "description": "Descriptiion of mission 'Thirty nine'",
-      "nextNodes": [47]
+      "nextNodes": [40]
     },
     {
       "id": 40,
       "name": "Fourty",
       "description": "Descriptiion of mission 'Fourty'",
-      "nextNodes": [47]
+      "nextNodes": [41]
     },
     {
       "id": 41,
       "name": "Fourty one",
       "description": "Descriptiion of mission 'Fourty one'",
-      "nextNodes": [47]
+      "nextNodes": [42, 43]
     },
     {
       "id": 42,
       "name": "Fourty two",
       "description": "Descriptiion of mission 'Fourty two'",
-      "nextNodes": [48]
+      "nextNodes": [45]
     },
     {
       "id": 43,
       "name": "Fourty three",
       "description": "Descriptiion of mission 'Fourty three'",
-      "nextNodes": [48]
-    },
-    {
-      "id": 44,
-      "name": "Fourty four",
-      "description": "Descriptiion of mission 'Fourty four'",
-      "nextNodes": [48]
+      "nextNodes": [46]
     },
     {
       "id": 45,
       "name": "Fourty five",
       "description": "Descriptiion of mission 'Fourty five'",
-      "nextNodes": [48]
+      "nextNodes": [49]
     },
     {
       "id": 46,
       "name": "Fourty six",
       "description": "Descriptiion of mission 'Fourty six'",
-      "nextNodes": [48]
-    },
-    {
-      "id": 47,
-      "name": "Fourty seven",
-      "description": "Descriptiion of mission 'Fourty seven'",
-      "nextNodes": [49]
-    },
-    {
-      "id": 48,
-      "name": "Fourty eight",
-      "description": "Descriptiion of mission 'Fourty eight'",
-      "nextNodes": [50]
+      "nextNodes": [50, 51]
     },
     {
       "id": 49,
       "name": "Fourty nine",
       "description": "Descriptiion of mission 'Fourty nine'",
-      "nextNodes": [50]
+      "nextNodes": [54]
     },
     {
       "id": 50,
       "name": "Fifty",
       "description": "Descriptiion of mission 'Fifty'",
+      "nextNodes": [55]
+    },
+    {
+      "id": 51,
+      "name": "Fifty one",
+      "description": "Descriptiion of mission 'Fifty one'",
+      "nextNodes": [52]
+    },
+    {
+      "id": 52,
+      "name": "Fifty two",
+      "description": "Descriptiion of mission 'Fifty two'",
+      "nextNodes": [53]
+    },
+    {
+      "id": 53,
+      "name": "Fifty three",
+      "description": "Descriptiion of mission 'Fifty three'",
+      "nextNodes": [56]
+    },
+    {
+      "id": 54,
+      "name": "Fifty four",
+      "description": "Descriptiion of mission 'Fifty four'",
+      "nextNodes": [57]
+    },
+    {
+      "id": 55,
+      "name": "Fifty five",
+      "description": "Descriptiion of mission 'Fifty five'",
+      "nextNodes": [57]
+    },
+    {
+      "id": 56,
+      "name": "Fifty six",
+      "description": "Descriptiion of mission 'Fifty six'",
+      "nextNodes": [57]
+    },
+    {
+      "id": 57,
+      "name": "Fifty seven",
+      "description": "Descriptiion of mission 'Fifty seven'",
+      "nextNodes": [59]
+    },
+    {
+      "id": 59,
+      "name": "Fifty nine",
+      "description": "Descriptiion of mission 'Fifty nine'",
+      "nextNodes": [60]
+    },
+    {
+      "id": 60,
+      "name": "Sixty",
+      "description": "Descriptiion of mission 'Sixty'",
+      "nextNodes": [62]
+    },
+    {
+      "id": 62,
+      "name": "Sixty two",
+      "description": "Descriptiion of mission 'Sixty two'",
+      "nextNodes": [64, 65, 66]
+    },
+    {
+      "id": 64,
+      "name": "Sixty four",
+      "description": "Descriptiion of mission 'Sixty four'",
+      "nextNodes": [68]
+    },
+    {
+      "id": 65,
+      "name": "Sixty five",
+      "description": "Descriptiion of mission 'Sixty five'",
+      "nextNodes": [69]
+    },
+    {
+      "id": 66,
+      "name": "Sixty six",
+      "description": "Descriptiion of mission 'Sixty six'",
+      "nextNodes": [70]
+    },
+    {
+      "id": 68,
+      "name": "Sixty eight",
+      "description": "Descriptiion of mission 'Sixty eight'",
+      "nextNodes": [73]
+    },
+    {
+      "id": 69,
+      "name": "Sixty nine",
+      "description": "Descriptiion of mission 'Sixty nine'",
+      "nextNodes": [74]
+    },
+    {
+      "id": 70,
+      "name": "Seventy",
+      "description": "Descriptiion of mission 'Seventy'",
+      "nextNodes": [75]
+    },
+    {
+      "id": 73,
+      "name": "Seventy three",
+      "description": "Descriptiion of mission 'Seventy three'",
+      "nextNodes": [76]
+    },
+    {
+      "id": 74,
+      "name": "Seventy four",
+      "description": "Descriptiion of mission 'Seventy four'",
+      "nextNodes": [77]
+    },
+    {
+      "id": 75,
+      "name": "Seventy five",
+      "description": "Descriptiion of mission 'Seventy five'",
+      "nextNodes": [78]
+    },
+    {
+      "id": 76,
+      "name": "Seventy six",
+      "description": "Descriptiion of mission 'Seventy six'",
+      "nextNodes": [79, 80, 81]
+    },
+    {
+      "id": 77,
+      "name": "Seventy seven",
+      "description": "Descriptiion of mission 'Seventy seven'",
+      "nextNodes": [79, 80, 81]
+    },
+    {
+      "id": 78,
+      "name": "Seventy eight",
+      "description": "Descriptiion of mission 'Seventy eight'",
+      "nextNodes": [79, 80, 81]
+    },
+    {
+      "id": 79,
+      "name": "Seventy nine",
+      "description": "Descriptiion of mission 'Seventy nine'",
+      "nextNodes": []
+    },
+    {
+      "id": 80,
+      "name": "Eighty nine",
+      "description": "Descriptiion of mission 'Eighty'",
+      "nextNodes": []
+    },
+    {
+      "id": 81,
+      "name": "Eighty nine",
+      "description": "Descriptiion of mission 'Eighty one'",
       "nextNodes": []
     }
   ]

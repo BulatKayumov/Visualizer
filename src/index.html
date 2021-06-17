@@ -4,23 +4,156 @@
     <meta charset="UTF-8">
     <title>Vizualizer</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <!-- <style>
-      .svgDiv{
-        width: 100%;
-        height: 100%;
-        overflow: scroll;
-      }
-    </style> -->
+    <style>
+    input[type="file"] {
+    display: none;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+    	display: none;
+    }
+    input[type="number"]:focus {
+    	outline: none;
+    }
+    .custom-file-upload {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+    .custom-select {
+        border: 1px solid #444;
+        display: inline-block;
+        padding: 3px 12px;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 20px;
+        height: 30px;
+        width: 150px;
+        position: relative;
+        background-color: #303030;
+        color: #ccc;
+        float: right;
+    }
+    .custom-number-input {
+      border: 1px solid #444;
+      height: 30px;
+      width: 100px;
+      position: relative;
+      background-color: #303030;
+      float: right;
+      color: #ccc;
+    }
+    .custom-range {
+      width: 100%;
+    }
+    </style>
   </head>
   <body style="height: 100%; width: 100%">
-    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-      <div class="container" height=600>
-        <span class="navbar-brand"><button type= "button" class="btn btn-primary" id="createGraphBtn">Create Graph</button></span>
-        <span class="navbar-brand"><button type= "button" class="btn btn-primary" id="removeGraphBtn">Remove Graph</button></span>
-        <!--<span class="navbar-brand"><button type= "button" class="btn btn-primary" id="exportTreeBtn">Export Tree</button></span>-->
+    <hr>
+    <div class="container-row" height=600 style="margin-left: 30px;">
+        <span class="navbar-brand" background-color="#303030"><button type= "button" class="btn btn-primary" id="createGraphBtn">Import Graph</button></span>
+        <span class="navbar-brand" style="position:relative; right:0px;"><button type= "button" class="btn btn-primary" id="removeGraphBtn" style="display:none;">Remove Graph</button></span>
+        <span class="navbar-brand" style="position:relative; right:0px;"><button type= "button" class="btn btn-primary" id="settingsBtn" style="display:none;">Settings</button></span>
+        <span class="navbar-brand" style="position:relative; right:0px;"><button type= "button" class="btn btn-primary" id="showClustersBtn" style="display:none;">Show Clusters</button></span>
+      <!--<span class="navbar-brand"><button type= "button" class="btn btn-primary" id="exportTreeBtn">Export Tree</button></span>-->
+    </div>
+    <hr>
+    <!-- <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    </div> -->
+    <!-- <hr><hr><hr> -->
+    <div class="bs-component">
+      <div id="importGraphModal" class="modal" style="display:none">
+        <div class="modal-dialog" role="document" style="margin-left:auto; margin-right:auto; margin-top:30%; margin-bottom:30%;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Import graph</h5>
+            </div>
+            <div class="modal-body">
+              <div style="width:30%; padding:5px; float:left; height:50px">
+                <label for="file-upload" class="custom-file-upload">
+                  <i class="fa fa-cloud-upload"></i> Choose file
+                </label>
+                <input id="file-upload" type="file"/>
+              </div>
+              <div style="width:70%; padding:5px; float:left; height:50px">
+                <p id="fileText" style="margin-top:5px; color:#888"></p>
+              </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" id="importButton" class="btn btn-primary">Import</button>
+              <button type="button" id="closeImportButton" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="settingsModal" class="modal" style="display:none">
+        <div class="modal-dialog" role="document" style="margin-left:auto; margin-right:auto; margin-top:15%; margin-bottom:30%;">
+          <div class="modal-content" style="height:540px">
+            <div class="modal-header">
+              <h5 class="modal-title">Settings</h5>
+            </div>
+            <div class="modal-body" style="padding:20px 20px 10px 20px">
+              <div style="width:30%; padding:5px; float:left; height:30px">
+                <label for="selectMethod" style="height:20px; margin-left:10px">Method:</label>
+              </div>
+              <div style="width:40%; padding:5px; float:right; height:30px">
+                <select class="custom-select" id="selectMethod">
+                </select>
+              </div>
+            </div>
+            <div class="modal-body" style="padding:10px 20px">
+              <div style="width:40%; padding:5px; float:left; height:50px;">
+                <label for="nodeWidth" style="height:20px; margin-left:10px">Node width:</label>
+              </div>
+              <div style="width:40%; padding:5px; float:right; height:50px;">
+                <input type="number" class="custom-number-input" step="1" min="400" max="2000" required id="nodeWidth">
+              </div>
+              <div style="width:100%; padding:5px; float:none; height:50px;">
+                <input type="range" class="custom-range" min="400" max="2000" step="1" id="nodeWidthRange">
+              </div>
+            </div>
+            <div class="modal-body" style="padding:10px 20px">
+              <div style="width:40%; padding:5px; float:left; height:50px;">
+                <label for="nodeWidth" style="height:20px; margin-left:10px">Node Height:</label>
+              </div>
+              <div style="width:40%; padding:5px; float:right; height:50px;">
+                <input type="number" class="custom-number-input" step="1" min="150" max="1000" required id="nodeHeight">
+              </div>
+              <div style="width:100%; padding:5px; float:none; height:50px;">
+                <input type="range" class="custom-range" min="150" max="1000" step="1" required id="nodeHeightRange">
+              </div>
+            </div>
+            <div class="modal-body" style="padding:10px 20px">
+              <div style="width:40%; padding:5px; float:left; height:50px;">
+                <label for="nodeWidth" style="height:20px; margin-left:10px">Horizontal spacing:</label>
+              </div>
+              <div style="width:40%; padding:5px; float:right; height:50px;">
+                <input type="number" class="custom-number-input" step="1" min="0" max="2000" required id="horizontalSpacing">
+              </div>
+              <div style="width:100%; padding:5px; float:none; height:50px;">
+                <input type="range" class="custom-range" min="0" max="2000" step="1" required id="horizontalSpacingRange">
+              </div>
+            </div>
+            <div class="modal-body" style="padding:10px 20px">
+              <div style="width:40%; padding:5px; float:left; height:50px;">
+                <label for="nodeWidth" style="height:20px; margin-left:10px">Vertical spacing:</label>
+              </div>
+              <div style="width:40%; padding:5px; float:right; height:50px;">
+                <input type="number" class="custom-number-input" step="1" min="0" max="2000" required id="verticalSpacing">
+              </div>
+              <div style="width:100%; padding:5px; float:none; height:50px;">
+                <input type="range" class="custom-range" min="0" max="2000" step="1" required id="verticalSpacingRange">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="applySettingsButton" class="btn btn-primary">Apply</button>
+              <button type="button" id="closeSettingsButton" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <hr><hr><hr>
     <div>
       <svg></svg>
     </div>

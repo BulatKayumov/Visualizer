@@ -23,7 +23,6 @@ function createAppWindow() {
     width: 1200,
     height: 800,
     icon: 'app/icons/Icon.png',
-    // небезопасно
     webPreferences: {
         nodeIntegration: true
     }
@@ -36,7 +35,7 @@ function createAppWindow() {
   }));
 
     // Open the DevTools.
-      //mainWindow.webContents.openDevTools();
+      mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', () => {
       mainWindow = null
@@ -47,17 +46,11 @@ function addAppEventListeners() {
   app.on('window-all-closed', function() {
     quit();
   });
-  ipc.on('createTreeBtnClicked', function(event){
-    mainWindow.webContents.send('createTree')
-    event.sender.send('tree-create-button-clicked', 'Main process created tree')
+  ipc.on('graph-recognized-tree', function(event){
+    mainWindow.webContents.send('graph-recognized', 'Tree')
   });
-  ipc.on('removeTreeBtnClicked', function(event){
-    mainWindow.webContents.send('removeTree')
-    event.sender.send('tree-remove-button-clicked', 'Main process removed tree')
-  });
-  ipc.on('exportTreeBtnClicked', function(event){
-    mainWindow.webContents.send('exportTree')
-    event.sender.send('tree-export-button-clicked', 'Main process exported tree to JSON')
+  ipc.on('graph-recognized-DAG', function(event){
+    mainWindow.webContents.send('graph-recognized', 'DAG')
   });
   ipc.on('createGraphBtnClicked', function(event){
     mainWindow.webContents.send('createGraph')
