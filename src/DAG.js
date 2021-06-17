@@ -402,13 +402,28 @@ var nodeYSpacing = 500;
 
 var rootCluster;
 var _clusters = [];
+var clustersVisualization;
+
+const showClustersButton = document.getElementById('showClustersBtn')
+showClustersButton.addEventListener('click', function(){
+  ShowClusters();
+  showClustersButton.setAttribute("style", "display:none")
+  hideClustersButton.setAttribute("style", "display:block")
+})
+
+const hideClustersButton = document.getElementById('hideClustersBtn')
+hideClustersButton.addEventListener('click', function(){
+  HideClusters();
+  showClustersButton.setAttribute("style", "display:block")
+  hideClustersButton.setAttribute("style", "display:none")
+})
 
 // SortingGroups
 // Centering
 // Clusters
 // Barycenters
 // Force Simulation
-var calculatePositionsMethod = "Clusters";
+var method = "Clusters";
 
 function RemoveGraph(){
   clearSVG();
@@ -421,7 +436,7 @@ function RemoveGraph(){
 function DrawDAG(data, options){
   console.log(options);
   dataNodes = data.nodes.map(d => Object.create(d));
-  calculatePositionsMethod = options.method;
+  method = options.method;
   dy = options.nodeWidth;
   dx = options.nodeHeight;
   nodeXSpacing = options.nodeXSpacing;
@@ -672,7 +687,7 @@ function SetYPositions(groups){
 }
 
 function CalculatePositions(groups, minNeighDistX) {
-  switch (calculatePositionsMethod) {
+  switch (method) {
     case "SortingGroups":
       SortingGroupsMethod(groups, minNeighDistX);
       break;
@@ -689,7 +704,7 @@ function CalculatePositions(groups, minNeighDistX) {
       ForceSimulationMethod(groups, minNeighDistX);
       break;
     default:
-      console.error(calculatePositionsMethod, "Is Wrong Calculate Positions Method");
+      console.error(method, "Is Wrong Calculate Positions Method");
   }
 }
 
@@ -1541,7 +1556,12 @@ function ShowGraph(){
 
   const g = Groups(svg, offset);
 
-  const cluster = DrawCluster(g);
+  if(method == "Clusters"){
+    clustersVisualization = DrawClusters(g);
+    clustersVisualization
+      .attr("style", "display:none");
+    showClustersButton.setAttribute("style", "display:block");
+  }
 
   // Соединения
   const link = DrawLinks(nodes, g);
@@ -1652,7 +1672,7 @@ function DrawLinks(nodes, g) {
                     .y(d => d.x));;
 }
 
-function DrawCluster(g){
+function DrawClusters(g){
   let cluster = g.append("g")
       .attr("stroke-linejoin", "round")
       .attr("stroke-width", 10)
@@ -1675,6 +1695,16 @@ function DrawCluster(g){
       .attr("ry", 50);
 
   return cluster;
+}
+
+function ShowClusters() {
+  clustersVisualization
+    .attr("style", "display:block");
+}
+
+function HideClusters() {
+  clustersVisualization
+    .attr("style", "display:none");
 }
 
 function DrawNode(nodes, g) {
