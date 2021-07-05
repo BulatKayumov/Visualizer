@@ -190,7 +190,7 @@
       "id": 31,
       "name": "Thirty one",
       "description": "Descriptiion of mission 'Thirty one'",
-      "nextNodes": [35, 32]
+      "nextNodes": [35]
     },
     {
       "id": 32,

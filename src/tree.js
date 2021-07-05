@@ -2,17 +2,6 @@ var d3 = require('d3', 'd3-scale', 'd3-scale-chromatic', 'd3-array', 'd3@6');
 var $ = require('jquery');
 var d3plus = require('d3plus');
 
-// function removeTree(){
-//   console.log("43");
-//   d3.select("svg")
-//   .remove()
-// }
-
-// function drawTree(){
-//   removeTree();
-//   const treeChart = chart();
-// }
-
 var tree;
 var width;
 var height;
@@ -38,8 +27,6 @@ function drawTree(data, options){
   dy = options.nodeHeight;
   nodeXSpacing = options.nodeXSpacing;
   nodeYSpacing = options.nodeYSpacing;
-  // console.log("data ", data);
-  // console.log("tree ", tree);
   const treeChart = chart();
 }
 
@@ -86,15 +73,6 @@ function chart(){
         .attr("viewBox", [0, 0, width, height])
         .attr("preserveAspectRatio", "none");
 
-    // const borderPath = svg.append("rect")
-   	// 		.attr("x", 0)
-   	// 		.attr("y", 0)
-   	// 		.attr("height", height)
-   	// 		.attr("width", width)
-   	// 		.style("stroke", "#999999")
-   	// 		.style("fill", "none")
-   	// 		.style("stroke-width", 4);
-
     const g = svg.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 10)
@@ -102,9 +80,9 @@ function chart(){
 
     const link = g.append("g")
       .attr("fill", "none")
-      .attr("stroke", "#555")
-      .attr("stroke-opacity", 0.4)
-      .attr("stroke-width", 10)
+      .attr("stroke", "#000")
+      .attr("stroke-opacity", 0.8)
+      .attr("stroke-width", 20)
     .selectAll("path")
       .data(root.links())
       .join("path")
@@ -122,7 +100,7 @@ function chart(){
 
     node.append("rect")
         .attr("fill", "#888")
-        .attr("stroke", "#DDD")
+        .attr("stroke", "#333")
         .attr("stroke-width", 3)
         .attr("stroke-linejoin", "round")
         .attr("x", dx / -2)
@@ -134,7 +112,7 @@ function chart(){
 
     node.append("rect")
         .attr("fill", "#AAA")
-        .attr("stroke", "#DDD")
+        .attr("stroke", "#333")
         .attr("stroke-width", 3)
         .attr("stroke-linejoin", "round")
         .attr("x", dx / -2)
@@ -156,43 +134,25 @@ function chart(){
 
     node.append("text")
         .text(d => d.data.description)
-        // .attr("class", "textwrap")
-        //.call(wrap, dy - 50)
         .attr("x", 0)
         .attr("y", 0)
         .attr("text-anchor", "middle")
         .attr("font-size", "20")
         .attr("font-weight", "500")
-        //.attr("size", dy * 0.9)
       .clone(true).lower()
         .attr("stroke", "white");
 
-    // d3plus.textwrap()
-    //   .container(node)
-    //   .width(270)
-    //   .height(90)
-    //   .draw();
+    const zoom = d3.zoom();
 
-      svg.call(d3.zoom()
-        .extent([[-width / 2, 0], [width, height]])
-        .scaleExtent([0.05, 4])
-        //.translateExtent([[0, 0], [width, height / 2]])
-        .on("zoom", zoomed));
+    svg.call(zoom.transform, d3.zoomIdentity);
 
-        // var events = []
-        // svg.on('mousemove', (event) => {
-        //   var coords = d3.pointer( event );
-        //   console.log( coords[0], coords[1] ) // log the mouse x,y position
-        //   var circle = svg.append('circle')
-        //       .attr('cx', coords[0])
-        //       .attr('cy', coords[1])
-        //       .attr('r', 10)
-        //       .attr('fill', 'red')
-        // });
+    svg.call(zoom
+      .scaleExtent([0.1, 6])
+      .on("zoom", zoomed));
 
-      function zoomed({transform}) {
-        g.attr("transform", transform);
-      }
+    function zoomed({transform}) {
+      g.attr("transform", transform);
+    }
   } else{
     console.log("null");
   }
@@ -204,11 +164,11 @@ function wrap(text, width) {
         words = text.text().split(/\s+/).reverse(),
         word,
         line = [],
-        lineNumber = 0, //<-- 0!
-        lineHeight = 1.2, // ems
-        x = text.attr("x") ? text.attr("x") : 50, //<-- include the x!
+        lineNumber = 0,
+        lineHeight = 1.2,
+        x = text.attr("x") ? text.attr("x") : 50,
         y = text.attr("y") ? text.attr("y") : 0,
-        dy = text.attr("dy") ? text.attr("dy") : 0; //<-- null check
+        dy = text.attr("dy") ? text.attr("dy") : 0;
         tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em").attr("dx", "0em");
         while (word = words.pop()) {
             line.push(word);
@@ -224,13 +184,13 @@ function wrap(text, width) {
 }
 
 function exportTree(){
-  console.log(tree); //root contains everything you need
-      const getCircularReplacer = (deletePorperties) => { //func that allows a circular json to be stringified
+  console.log(tree);
+      const getCircularReplacer = (deletePorperties) => {
         const seen = new WeakSet();
         return (key, value) => {
           if (typeof value === "object" && value !== null) {
             if(deletePorperties){
-              delete value.id; //delete all properties you don't want in your json (not very convenient but a good temporary solution)
+              delete value.id;
               delete value.x0;
               delete value.y0;
               delete value.y;
@@ -247,15 +207,15 @@ function exportTree(){
         };
       };
 
-      var myRoot = JSON.stringify(tree, getCircularReplacer(false)); //Stringify a first time to clone the root object (it's allow you to delete properties you don't want to save)
+      var myRoot = JSON.stringify(tree, getCircularReplacer(false));
       var myvar= JSON.parse(myRoot);
-      myvar= JSON.stringify(myvar, getCircularReplacer(true)); //Stringify a second time to delete the propeties you don't need
+      myvar= JSON.stringify(myvar, getCircularReplacer(true));
 
-      console.log(myvar); //You have your json in myvar
+      console.log(myvar);
 }
 
 module.exports = {
   DrawGraph: drawTree,
-  removeGraph: removeTree,
-  exportGraph: exportTree
+  RemoveGraph: removeTree,
+  ExportGraph: exportTree
 };

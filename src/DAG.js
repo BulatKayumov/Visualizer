@@ -1,9 +1,12 @@
 "use strict";
-var d3 = require('d3', 'd3-scale', 'd3-scale-chromatic', 'd3-array', 'd3@6', '');
-var $ = require('jquery');
+const d3 = require('d3', 'd3-scale', 'd3-scale-chromatic', 'd3-array', 'd3@6', '');
+const d3plus = require('d3plus');
+const $ = require('jquery');
 
 class Node{
   name = "Node";
+  info = [];
+  text = "";
   description = "Description";
   nextNodes = [];
   prevNodes = [];
@@ -23,8 +26,42 @@ class Node{
   instantiate(node){
     this.id = node.id;
     this.name = node.name;
-    this.description = node.description;
     this.nextNodes = node.nextNodes;
+    this.info = new Map();
+
+    let keys = Object.keys(node);
+
+    if(keys.includes("nestedScenario")){
+      this.nestedScenario = node.nestedScenario;
+      this.type = "nested";
+    }
+
+    keys.forEach((key) => {
+      if(info.has(key) && node[key] !== undefined && node[key] != null){
+        this.info.set(key, node[key]);
+      }
+    });
+
+    let str = "";
+    for (var [key, value] of this.info) {
+
+      str += key[0].toUpperCase() + key.slice(1) + ": ";
+      if(typeof value !== 'object'){
+       str += value + "\n";
+      }
+      else {
+        if(Symbol.iterator in Object(value)){
+          for(let elem of value){
+            str += elem + ", ";
+          }
+          str = str.slice(0, str.length - 2) + "\n";
+        }
+        else {
+          str += value[Object.keys(value)[0]] + "\n";
+        }
+      }
+    }
+    this.text = str.slice(0, str.length - 1);
   }
 
   setNextNodes(){
@@ -148,7 +185,6 @@ class Cluster{
     }
   }
 
-// сначала сорт, потом неигхс, потом сет поз
   SetNeighs(){
     this.children.forEach((child) => {
       child.topClusters = new Set();
@@ -400,9 +436,12 @@ var maxBreadth;
 var nodeXSpacing = 300;
 var nodeYSpacing = 500;
 
+var backupData;
+
 var rootCluster;
 var _clusters = [];
 var clustersVisualization;
+var info;
 
 const showClustersButton = document.getElementById('showClustersBtn')
 showClustersButton.addEventListener('click', function(){
@@ -416,6 +455,11 @@ hideClustersButton.addEventListener('click', function(){
   HideClusters();
   showClustersButton.setAttribute("style", "display:block")
   hideClustersButton.setAttribute("style", "display:none")
+})
+
+const nestedBackButton = document.getElementById('nestedBackBtn')
+nestedBackButton.addEventListener('click', function(){
+  Back();
 })
 
 // SortingGroups
@@ -433,9 +477,9 @@ function RemoveGraph(){
   backupLinks = [];
 }
 
-function DrawDAG(data, options){
-  console.log(options);
-  dataNodes = data.nodes.map(d => Object.create(d));
+function DrawDAG(data, options, _info){
+  info = _info;
+  dataNodes = data.nodes;
   method = options.method;
   dy = options.nodeWidth;
   dx = options.nodeHeight;
@@ -452,8 +496,6 @@ function Draw(){
     nodes.push(node)
   });
 
-  console.log("NODES", nodes);
-
   const graphChart = chart();
 }
 
@@ -466,33 +508,19 @@ function chart(){
 
     CreatePrevNodesArray();
 
-    //Сортировка
     nodes = TopologicalSort(nodes);
 
     CalculateDepths();
 
-    //AddFictitiousNodes(nodes);
-
-    //Вычисление максимальной глубины графа
     maxDepth = CalculateMaxDepth(nodes);
 
-    //Группировка узлов графа по глубине
     var groups = CreateGroups(nodes, maxDepth);
 
-    //Вычисление максимальной ширины графа
     maxBreadth = CalculateMaxBreadth(groups);
 
-    // Вычисление ширины холста для графа
     width = dy * (maxDepth * 2 + 3);
 
-    // Вычисление высоты холста для графа
     height = dx * (maxBreadth + 20);
-
-    console.log("width", width);
-    console.log("height", height);
-
-    console.log("window width", window.innerWidth);
-    console.log("window height", window.innerHeight);
 
     SetYPositions(groups);
 
@@ -502,11 +530,7 @@ function chart(){
 
     console.log(nodes);
     console.log(_clusters);
-    //DeleteFictitiousNodes();
     ShowGraph();
-    // for (var i = 0; i < 10; i++) {
-    //     window.setTimeout(function() { ShowGraph() }, 1000 * i);
-    // }
 
   } else{
     console.log("null");
@@ -638,6 +662,10 @@ function Step(node, black){
   return true;
 }
 
+function ChangeOrientation(node, nextNode) {
+
+}
+
 function CalculateMaxDepth(nodes) {
   let maxDepth = 0;
   nodes.forEach((node) => {
@@ -661,7 +689,6 @@ function CreateGroups(nodes, maxDepth){
       }
     });
   });
-  console.log(groups);
   return groups;
 }
 
@@ -697,7 +724,7 @@ function CalculatePositions(groups, minNeighDistX) {
     case "Barycenters":
       BarycentersMethod(groups, minNeighDistX);
       break;
-    case "Centering":
+    case "Equal Distribution":
       CenteringMethod(groups, minNeighDistX);
       break;
     case "Force Simulation":
@@ -716,7 +743,7 @@ function CenteringMethod(groups, minNeighDistX){
 function BarycentersMethod(groups, minNeighDistX){
   BM_SortNodesInGroups(groups);
   BM_SetPreliminaryXPositions(groups, minNeighDistX);
-  let count = 10;
+  let count = 1;
   for(let i = 0; i < count; i++){
     BM_SetXPositionsIncrease(groups, minNeighDistX, i);
     BM_SetXPositionsDecrease(groups, minNeighDistX, i);
@@ -772,19 +799,8 @@ function BM_SetXPositionsIncrease(groups, minNeighDistX, index){
         else {
           node.x = AverageX(node.prevNodes.concat(node.nextNodes));
         }
-        // if(node.prevNodes.length == node.nextNodes.length){
-        //   node.x = AverageX(node.prevNodes.concat(node.nextNodes));
-        // }
       }
-      // if(node.prevNodes.length >= node.nextNodes.length){
-      //   node.x = AverageX(node.prevNodes);
-      // }
-      // if(node.prevNodes.length == node.nextNodes.length){
-      //   node.x = AverageX(node.prevNodes.concat(node.nextNodes));
-      // }
     });
-
-    console.log(group.nodes);
 
     let median = group.nodes[0].x;
     let medianNodes = [];
@@ -798,8 +814,6 @@ function BM_SetXPositionsIncrease(groups, minNeighDistX, index){
       }
     });
 
-    console.log("m", medianNodes);
-
     let preMedianNodes = []
     let upperMedianNodes = [];
 
@@ -811,10 +825,6 @@ function BM_SetXPositionsIncrease(groups, minNeighDistX, index){
         upperMedianNodes.push(node);
       }
     });
-    // console.log(groups.indexOf(group));
-    // console.log("pre", preMedianNodes);
-    // console.log("median", medianNodes);
-    // console.log("upper", upperMedianNodes);
 
     DistributeNodes(median, medianNodes, minNeighDistX)
 
@@ -865,16 +875,7 @@ function BM_SetXPositionsDecrease(groups, minNeighDistX, index){
         else {
           node.x = AverageX(node.nextNodes.concat(node.prevNodes));
         }
-        // if(node.nextNodes.length == node.prevNodes.length){
-        //   node.x = AverageX(node.nextNodes.concat(node.prevNodes));
-        // }
       }
-      // if(node.nextNodes.length >= node.prevNodes.length){
-      //   node.x = AverageX(node.nextNodes);
-      // }
-      // if(node.prevNodes.length == node.nextNodes.length){
-      //   node.x = AverageX(node.prevNodes.concat(node.nextNodes));
-      // }
     });
 
     let median = group.nodes[0].x;
@@ -1048,7 +1049,6 @@ function SortingGroupsMethod(groups, minNeighDistX){
         }
         break;
       }
-      //console.log("First", firstIndex, "Last", lastIndex, "Count", count);
       let totalX = AverageX + (minNeighDistX * ((count - 1) * 0.5));
       for(let q = firstIndex; q <= lastIndex; q++){
           group.nodes[q].x = totalX;
@@ -1236,7 +1236,6 @@ function CM_SortChildren(cluster) {
     cluster.children.forEach((child) => {
       if(array.length == 0){
         array.push(child);
-        //console.log("first element", cluster.id, child.id);
       }
       else {
         sum = child.topValue + child.botValue;
@@ -1269,7 +1268,6 @@ function CM_SortChildren(cluster) {
           else {
             array.push(child);
           }
-          //console.log("sum=0", cluster.id, child.id);
         }
         else {
           approximateIndex /= sum;
@@ -1277,7 +1275,6 @@ function CM_SortChildren(cluster) {
           if(index == -1){
             index = 0;
           }
-          //console.log("Index", cluster.id, child.id, array, index);
           if(index == 0 && child.topValue < array[0].topValue){
             index++;
           }
@@ -1304,182 +1301,6 @@ function CM_SortChildren(cluster) {
 
     cluster.children = array;
 
-    // let top = [];
-    // let bot = [];
-    // let middle = [];
-    // let topFlag = true;
-    // let botFlag = true;
-    // console.log(cluster);
-    // console.log("1 children", cluster.children);
-    //
-    // while(cluster.children.length > 0){
-    //   if(topFlag){
-    //     let topValue = 0;
-    //     let topIndex;
-    //     let topRate = 0;
-    //     if(top.length == 0){
-    //       cluster.children.forEach((cluster, i) => {
-    //         if(cluster.topValue > topValue){
-    //           topIndex = i;
-    //           topValue = cluster.topValue;
-    //         }
-    //       });
-    //     }
-    //     else {
-    //       let topNeighbour = top[top.length - 1];
-    //       cluster.children.forEach((child, i) => {
-    //         let neighbourhood = CM_FindNeigbourhood(topNeighbour, child);
-    //         if(child.topValue + neighbourhood.value > topValue){
-    //           topIndex = i;
-    //           topValue = child.topValue + neighbourhood.value;
-    //           topRate = neighbourhood.rate;
-    //         }
-    //         else {
-    //           if(child.topValue + neighbourhood.value == topValue && neighbourhood.rate > topRate){
-    //             topIndex = i;
-    //             topValue = child.topValue + neighbourhood.value;
-    //             topRate = neighbourhood.rate;
-    //           }
-    //         }
-    //       });
-    //     }
-    //     if(topValue == 0){
-    //       topFlag = false;
-    //     }
-    //   }
-    //   if(botFlag){
-    //     let botValue = 0;
-    //     let botIndex;
-    //     let botRate = 0;
-    //     if(bot.length == 0){
-    //       cluster.children.forEach((child, i) => {
-    //         if(child.botValue > botValue){
-    //           botIndex = i;
-    //           botValue = child.botValue;
-    //         }
-    //       });
-    //     }
-    //     else {
-    //       let botNeighbour = bot[0];
-    //       cluster.children.forEach((child, i) => {
-    //         let neighbourhood = CM_FindNeigbourhood(botNeighbour, child);
-    //         if(child.botValue + neighbourhood.value > botValue){
-    //           botIndex = i;
-    //           botValue = child.botValue + neighbourhood.value;
-    //           botRate = neighbourhood.rate;
-    //         }
-    //         else {
-    //           if(child.botValue + neighbourhood.value > botValue && neighbourhood.rate > botRate){
-    //             botIndex = i;
-    //             botValue = child.botValue + neighbourhood.value;
-    //             botRate = neighbourhood.rate;
-    //           }
-    //         }
-    //       });
-    //     }
-    //     if(botValue == 0){
-    //       botFlag = false;
-    //     }
-    //   }
-    //
-    //   if(topFlag || botFlag){
-    //     if(topFlag && botFlag){
-    //       if(topValue >= botValue){
-    //         top.push(cluster.children.splice(topIndex, 1)[0]);
-    //       }
-    //       else {
-    //         bot.unshift(cluster.children.splice(botIndex, 1)[0]);
-    //       }
-    //     }
-    //     else {
-    //       if(topFlag){
-    //         top.push(cluster.children.splice(topIndex, 1)[0]);
-    //       }
-    //       else {
-    //         bot.unshift(cluster.children.splice(botIndex, 1)[0]);
-    //       }
-    //     }
-    //   }
-    //   else {
-    //     if(middle.length == 0){
-    //       if(cluster.children.length > 2){
-    //         let bestRate = 0;
-    //         let bestValue = 0;
-    //         let bestRateIndex;
-    //         cluster.children.forEach((child, i) => {
-    //           for(let j = i + 1; j < cluster.children.length; j++){
-    //             let neighbourhood = CM_FindNeigbourhood(child, cluster.children[j]);
-    //             if(neighbourhood.rate > bestRate || neighbourhood.rate == bestRate && neighbourhood.value > bestValue){
-    //               bestRate = neighbourhood.rate;
-    //               bestValue = neighbourhood.value;
-    //               bestRateIndex = i;
-    //             }
-    //           }
-    //         });
-    //         if(bestRateIndex === undefined){
-    //           middle.push(cluster.children.shift());
-    //         }
-    //         else {
-    //           middle.push(cluster.children.splice(bestRateIndex, 1)[0]);
-    //         }
-    //       }
-    //       else {
-    //         middle.push(cluster.children.shift());
-    //         if(cluster.children.length > 0){
-    //           middle.push(cluster.children.shift());
-    //         }
-    //       }
-    //     }
-    //     else {
-    //       let bestRate = 0;
-    //       let bestValue = 0;
-    //       let bestRateIndex;
-    //       let toEnd = true;
-    //       cluster.children.forEach((child, i) => {
-    //         let neighbourhood = CM_FindNeigbourhood(child, middle[middle.length - 1]);
-    //         if(neighbourhood.rate > bestRate || neighbourhood.rate == bestRate && neighbourhood.value > bestValue){
-    //           bestRate = neighbourhood.rate;
-    //           bestValue = neighbourhood.value;
-    //           bestRateIndex = i;
-    //           toEnd = true;
-    //         }
-    //         neighbourhood = CM_FindNeigbourhood(child, middle[0]);
-    //         if(neighbourhood.rate > bestRate || neighbourhood.rate == bestRate && neighbourhood.value > bestValue){
-    //           bestRate = neighbourhood.rate;
-    //           bestValue = neighbourhood.value;
-    //           bestRateIndex = i;
-    //           toEnd = false;
-    //         }
-    //       });
-    //
-    //       if(bestRate == 0){
-    //         console.log(cluster.id, "BEFORE CONCAT", middle, cluster.children);
-    //         middle = middle.concat(cluster.children);
-    //         console.log(cluster.id, "AFTER CONCAT", middle);
-    //         cluster.children = [];
-    //       }
-    //       else {
-    //         if(toEnd){
-    //           middle.push(cluster.children.splice(bestRateIndex, 1)[0])
-    //         }
-    //         else {
-    //           middle.unshift(cluster.children.splice(bestRateIndex, 1)[0])
-    //         }
-    //       }
-    //     }
-    //     middle.forEach((item) => {
-    //       console.log(cluster.id, "MIDDLE", item);
-    //     });
-    //     console.log("-------------------------------");
-    //   }
-    // }
-    //
-    // console.log("top middle bot", top, middle, bot);
-    // cluster.children = top.concat(middle, bot);
-    // console.log("2 children", cluster.children);
-
-
-
     cluster.children.forEach((child, i) => {
       let neighbourIndex;
       child.neighbours.forEach((neighbourhood) => {
@@ -1487,11 +1308,9 @@ function CM_SortChildren(cluster) {
         neighbourhood.clusters.forEach((cl) => {
           if(i < neighbourIndex){
             cl.botValue++;
-            //console.log("bot", cl.id, cl.botValue);
           }
           else {
             cl.topValue++;
-            //console.log("top", cl.id, cl.topValue);
           }
         });
 
@@ -1546,11 +1365,8 @@ function Simulate(groups, minNeighDistX){
 }
 
 function ShowGraph(){
-  // Устанавливаем размер холста
   const svg = SVG();
 
-  // Границы
-  //const borderPath = BorderPath(svg);
 
   const offset = Offset();
 
@@ -1561,26 +1377,23 @@ function ShowGraph(){
     clustersVisualization
       .attr("style", "display:none");
     showClustersButton.setAttribute("style", "display:block");
+    hideClustersButton.setAttribute("style", "display:none");
+  }
+  else {
+    showClustersButton.setAttribute("style", "display:none");
+    hideClustersButton.setAttribute("style", "display:none");
   }
 
-  // Соединения
   const link = DrawLinks(nodes, g);
 
-  // Ноды
   const node = DrawNode(nodes, g);
+
+  const nestedButtons = DrawNestedButtons(node);
+
+  //WrapText();
 
   Zoom(svg, g, offset);
 
-    // var events = []
-    // svg.on('mousemove', (event) => {
-    //   var coords = d3.pointer( event );
-    //   console.log( coords[0], coords[1] ) // log the mouse x,y position
-    //   var circle = svg.append('circle')
-    //       .attr('cx', coords[0])
-    //       .attr('cy', coords[1])
-    //       .attr('r', 10)
-    //       .attr('fill', 'red')
-    // });
 }
 
 // Очистка холста
@@ -1646,30 +1459,18 @@ function GetLinks(){
 function DrawLinks(nodes, g) {
   let links = GetLinks();
 
-    // links.push(Object.create({
-    //   source: Object.create({
-    //     x: 0,
-    //     y: 50000
-    //   }),
-    //   target:  Object.create({
-    //     x: 0,
-    //     y: -50000
-    //   })
-    // }));
-
     return g.append("g")
               .attr("fill", "none")
-              .attr("stroke", "#555")
-              .attr("stroke-opacity", 0.4)
-              .attr("stroke-width", 10)
+              .attr("stroke", "#000")
+              .attr("stroke-opacity", 0.8)
+              .attr("stroke-width", 20)
             .selectAll("path")
               .data(links)
               .join("path")
-                .attr("d", d3.linkHorizontal()
-                    // .source(d => [d[0].x + dx / 2, d[0].y + dy / 2])
-                    // .target(d => [d[1].x + dx / 2, d[1].y + dy / 2]));
+              //.attr('marker-end', 'url(#arrowhead)')
+              .attr("d", d3.linkHorizontal()
                     .x(d => d.y)
-                    .y(d => d.x));;
+                    .y(d => d.x));
 }
 
 function DrawClusters(g){
@@ -1708,7 +1509,6 @@ function HideClusters() {
 }
 
 function DrawNode(nodes, g) {
-  // Создание ноды
   let node = g.append("g")
       .attr("stroke-linejoin", "round")
       .attr("stroke-width", 10)
@@ -1717,10 +1517,9 @@ function DrawNode(nodes, g) {
     .join("g")
       .attr("transform", d => `translate(${d.y},${d.x})`);
 
-  // Внешний вид и информация на нодах
   node.append("rect")
       .attr("fill", d => d.color)
-      .attr("stroke", "#DDD")
+      .attr("stroke", "#333")
       .attr("stroke-width", 3)
       .attr("stroke-linejoin", "round")
       .attr("x", -dy / 2)
@@ -1732,7 +1531,7 @@ function DrawNode(nodes, g) {
 
   node.append("rect")
       .attr("fill", "#AAA")
-      .attr("stroke", "#DDD")
+      .attr("stroke", "#333")
       .attr("stroke-width", 3)
       .attr("stroke-linejoin", "round")
       .attr("x", -dy / 2)
@@ -1749,25 +1548,111 @@ function DrawNode(nodes, g) {
       .attr("fill", "#222")
       .attr("font-size", "28")
       .attr("font-weight", "650")
-      //.attr("size", dy * 0.9)
       .text(d => d.name)
     .clone(true).lower()
       .attr("stroke", "white");
 
-  node.append("text")
-      .text(d => d.description)
-      .attr("width", dy / 10)
-      .attr("height", dx)
-      .attr("x", 0)
-      .attr("y", dx * 0.1)
-      .attr("text-anchor", "middle")
-      .attr("font-size", "24")
-      .attr("font-weight", "500")
-      //.attr("size", dy * 0.9)
-    .clone(true).lower()
-      .attr("stroke", "white");
+      node.append(d => createSVGtext({text: d.text,
+            //x: -dx / 2 + 50,
+            //y: -dy / 2 + 10,
+            x: 0,
+            y: -dx / 2 + 70,
+            fontSize: 18,
+            fill: "#111",
+            textAnchor: "middle",
+            maxCharsPerLine: dy / 10}))
 
     return node;
+}
+
+function DrawNestedButtons(node){
+  let button = node.filter(function (d, i) {
+    return d.type == "nested";
+  })
+  .each(function (d) {
+    d3.select(this)
+      .append("circle")
+      .attr("cx", dy / 2 - 19)
+      .attr("cy", dx / 2 - 19)
+      .attr("r", 20)
+      .attr("fill", "#52442D")
+      .attr("stroke", "#333")
+      .attr("stroke-opacity", 0.8)
+      .attr("stroke-width", 3)
+      .on('click', function(dc) {
+        console.log(d);
+        backupData = dataNodes;
+        dataNodes = d.nestedScenario.nodes;
+        nestedBackButton.setAttribute("style", "display:block")
+        Draw();
+      });
+  })
+
+}
+
+function createSVGtext(config = {}) {
+
+  let {text, x = 0, y = 0,
+       fontSize = 14, fill = '#333',
+       textAnchor = "left",
+       maxCharsPerLine = 65,
+       lineHeight = 1.3} = config;
+
+  if (typeof config == "string") text = config;
+
+  let svgText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  svgText.setAttributeNS(null, 'x', x);
+  svgText.setAttributeNS(null, 'y', y);
+  svgText.setAttributeNS(null, 'font-size', fontSize);
+  svgText.setAttributeNS(null, 'fill', fill);
+  svgText.setAttributeNS(null, 'text-anchor', textAnchor);
+
+  //console.log("STR", text);
+
+  let array = text.split(/\n+/);
+
+  console.log("LINES", array);
+  let dy = 0;
+
+  array.forEach((item) => {
+    let words = item.trim().split(/\s+/).reverse(),
+    word,
+    lineNumber = 0,
+    line = [];
+    console.log(words);
+
+    while(word = words.pop()) {
+
+      line.push(word);
+      let testLineLength = line.join(" ").length;
+
+      if (testLineLength > maxCharsPerLine){
+        line.pop();
+
+        let svgTSpan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        svgTSpan.setAttributeNS(null, 'x', x);
+        svgTSpan.setAttributeNS(null, 'dy', dy + "em");
+
+        let tSpanTextNode = document.createTextNode(line.join(" "));
+        svgTSpan.appendChild(tSpanTextNode);
+        svgText.appendChild(svgTSpan);
+
+        line = [word];
+        dy = lineHeight;
+      }
+    }
+
+      let svgTSpan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan')
+      svgTSpan.setAttributeNS(null, 'x', x);
+      svgTSpan.setAttributeNS(null, 'dy', dy + "em");
+
+      let tSpanTextNode = document.createTextNode(line.join(" "));
+      svgTSpan.appendChild(tSpanTextNode);
+      svgText.appendChild(svgTSpan);
+      dy = lineHeight;
+  });
+
+  return svgText;
 }
 
 function Zoom(svg, g, offset) {
@@ -1785,14 +1670,20 @@ function Zoom(svg, g, offset) {
 
 }
 
+function Back() {
+  dataNodes = backupData;
+  nestedBackButton.setAttribute("style", "display:none")
+  Draw();
+}
+
 function ExportGraph(){
-  console.log(graph); //root contains everything you need
-      const getCircularReplacer = (deletePorperties) => { //func that allows a circular json to be stringified
+  console.log(graph);
+      const getCircularReplacer = (deletePorperties) => {
         const seen = new WeakSet();
         return (key, value) => {
           if (typeof value === "object" && value !== null) {
             if(deletePorperties){
-              delete value.id; //delete all properties you don't want in your json (not very convenient but a good temporary solution)
+              delete value.id;
               delete value.x0;
               delete value.y0;
               delete value.y;
@@ -1809,11 +1700,11 @@ function ExportGraph(){
         };
       };
 
-      var myRoot = JSON.stringify(graph, getCircularReplacer(false)); //Stringify a first time to clone the root object (it's allow you to delete properties you don't want to save)
+      var myRoot = JSON.stringify(graph, getCircularReplacer(false));
       var myvar= JSON.parse(myRoot);
-      myvar= JSON.stringify(myvar, getCircularReplacer(true)); //Stringify a second time to delete the propeties you don't need
+      myvar= JSON.stringify(myvar, getCircularReplacer(true));
 
-      console.log(myvar); //You have your json in myvar
+      console.log(myvar);
 }
 
 module.exports = {

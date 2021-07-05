@@ -8,6 +8,10 @@ const ipc = electron.ipcRenderer;
 var currentGraphClass;
 var graphData;
 
+const defaultParameters = ["id", "nodes", "name", "nextNodes", "children", "x", "y", "nestedScenario"];
+
+var info;
+
 class Options{
   method;
   nodeWidth;
@@ -24,6 +28,31 @@ class Options{
   }
 }
 
+function SaveInfoTree(root) {
+  let keys = Object.keys(root);
+  keys.forEach((key) => {
+    if(!defaultParameters.includes(key)){
+      info.add(key);
+    }
+  });
+  if(root.children != null){
+    root.children.forEach((child) => {
+      SaveInfoTree(child);
+    });
+  }
+}
+
+function SaveInfoDAG(data) {
+  data.nodes.forEach((node) => {
+    let keys = Object.keys(node);
+    keys.forEach((key) => {
+      if(!defaultParameters.includes(key)){
+        info.add(key);
+      }
+    });
+  });
+}
+
 function RemoveGraph(){
   if(currentGraphClass != null){
     currentGraphClass.RemoveGraph();
@@ -33,12 +62,19 @@ function RemoveGraph(){
 function RecognizeStructure(file){
   d3.json(file)
   .then(data => {
+    console.log("DATA", data);
     if(data.children != null){
+      info = new Set();
+      SaveInfoTree(data);
+      console.log("INFO", info);
       currentGraphClass = tree;
       graphData = data;
       ipc.send('graph-recognized-tree');
     }
     if(data.nodes != null){
+      info = new Set();
+      SaveInfoDAG(data);
+      console.log("INFO", info);
       currentGraphClass = DAG;
       graphData = data;
       ipc.send('graph-recognized-DAG');
@@ -47,7 +83,7 @@ function RecognizeStructure(file){
 }
 
 function DrawGraph(method, nodeWidth, nodeHeight, nodeYSpacing, nodeXSpacing){
-  currentGraphClass.DrawGraph(graphData, new Options(method, nodeWidth, nodeHeight, nodeXSpacing, nodeYSpacing));
+  currentGraphClass.DrawGraph(graphData, new Options(method, nodeWidth, nodeHeight, nodeXSpacing, nodeYSpacing), info);
 }
 
 function ExportGraph(){

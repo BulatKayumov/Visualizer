@@ -1,0 +1,1500 @@
+{
+  "name": "0",
+  "description": "Description of mission 0",
+  "children": [{
+    "name": "03",
+    "description": "Description of mission 03",
+    "children": [{
+      "name": "034",
+      "description": "Description of mission 034",
+      "children": [{
+        "name": "0340",
+        "description": "Description of mission 0340",
+        "children": [{
+          "name": "03400",
+          "description": "Description of mission 03400",
+          "children": []
+        },
+        {
+          "name": "03401",
+          "description": "Description of mission 03401",
+          "children": [{
+            "name": "034010",
+            "description": "Description of mission 034010",
+            "children": []
+          }]
+        },
+        {
+          "name": "03402",
+          "description": "Description of mission 03402",
+          "children": [{
+            "name": "034020",
+            "description": "Description of mission 034020",
+            "children": []
+          },
+          {
+            "name": "034021",
+            "description": "Description of mission 034021",
+            "children": []
+          },
+          {
+            "name": "034022",
+            "description": "Description of mission 034022",
+            "children": []
+          }]
+        }]
+      }]
+    },
+    {
+      "name": "035",
+      "description": "Description of mission 035",
+      "children": [{
+        "name": "0350",
+        "description": "Description of mission 0350",
+        "children": []
+      }]
+    },
+    {
+      "name": "037",
+      "description": "Description of mission 037",
+      "children": [{
+        "name": "0370",
+        "description": "Description of mission 0370",
+        "children": [{
+          "name": "03700",
+          "description": "Description of mission 03700",
+          "children": [{
+            "name": "037000",
+            "description": "Description of mission 037000",
+            "children": []
+          },
+          {
+            "name": "037001",
+            "description": "Description of mission 037001",
+            "children": [{
+              "name": "0370010",
+              "description": "Description of mission 0370010",
+              "children": []
+            }]
+          },
+          {
+            "name": "037002",
+            "description": "Description of mission 037002",
+            "children": []
+          },
+          {
+            "name": "037003",
+            "description": "Description of mission 037003",
+            "children": []
+          }]
+        }]
+      }]
+    },
+    {
+      "name": "038",
+      "description": "Description of mission 038",
+      "children": []
+    },
+    {
+      "name": "039",
+      "description": "Description of mission 039",
+      "children": [{
+        "name": "0390",
+        "description": "Description of mission 0390",
+        "children": [{
+          "name": "03900",
+          "description": "Description of mission 03900",
+          "children": [{
+            "name": "039000",
+            "description": "Description of mission 039000",
+            "children": [
+
+              {
+                "name": "07",
+                "description": "Description of mission 07",
+                "children": [{
+                  "name": "070",
+                  "description": "Description of mission 070",
+                  "children": [{
+                    "name": "0700",
+                    "description": "Description of mission 0700",
+                    "children": [{
+                      "name": "07000",
+                      "description": "Description of mission 07000",
+                      "children": []
+                    }]
+                  },
+                  {
+                    "name": "0701",
+                    "description": "Description of mission 0701",
+                    "children": [{
+                      "name": "07010",
+                      "description": "Description of mission 07010",
+                      "children": []
+                    },
+                    {
+                      "name": "07011",
+                      "description": "Description of mission 07011",
+                      "children": []
+                    }]
+                  },
+                  {
+                    "name": "0702",
+                    "description": "Description of mission 0702",
+                    "children": [{
+                      "name": "07020",
+                      "description": "Description of mission 07020",
+                      "children": []
+                    }]
+                  }]
+                }]
+              }
+            ]
+          }]
+        }]
+      },
+      {
+        "name": "0391",
+        "description": "Description of mission 0391",
+        "children": [{
+          "name": "03910",
+          "description": "Description of mission 03910",
+          "children": []
+        },
+        {
+          "name": "03911",
+          "description": "Description of mission 03911",
+          "children": [{
+            "name": "039110",
+            "description": "Description of mission 039110",
+            "children": [{
+              "name": "0391100",
+              "description": "Description of mission 0391100",
+              "children": [{
+                "name": "03911000",
+                "description": "Description of mission 03911000",
+                "children": []
+              }]
+            }]
+          },
+          {
+            "name": "039111",
+            "description": "Description of mission 039111",
+            "children": []
+          }]
+        },
+        {
+          "name": "03912",
+          "description": "Description of mission 03912",
+          "children": [{
+            "name": "039120",
+            "description": "Description of mission 039120",
+            "children": []
+          },
+          {
+            "name": "039121",
+            "description": "Description of mission 039121",
+            "children": [{
+              "name": "030",
+              "description": "Description of mission 030",
+              "children": [{
+                "name": "0300",
+                "description": "Description of mission 0300",
+                "children": [{
+                  "name": "00",
+                  "description": "Description of mission 00",
+                  "children": [{
+                    "name": "000",
+                    "description": "Description of mission 000",
+                    "children": []
+                  }]
+                },
+                {
+                  "name": "01",
+                  "description": "Description of mission 01",
+                  "children": [{
+                    "name": "010",
+                    "description": "Description of mission 010",
+                    "children": [{
+                      "name": "0100",
+                      "description": "Description of mission 0100",
+                      "children": [{
+                        "name": "01000",
+                        "description": "Description of mission 01000",
+                        "children": []
+                      },
+                      {
+                        "name": "01001",
+                        "description": "Description of mission 01001",
+                        "children": [{
+                          "name": "010010",
+                          "description": "Description of mission 010010",
+                          "children": []
+                        },
+                        {
+                          "name": "010011",
+                          "description": "Description of mission 010011",
+                          "children": [{
+                            "name": "0100110",
+                            "description": "Description of mission 0100110",
+                            "children": [{
+                              "name": "01001100",
+                              "description": "Description of mission 01001100",
+                              "children": []
+                            }]
+                          }]
+                        }]
+                      }]
+                    },
+                    {
+                      "name": "0101",
+                      "description": "Description of mission 0101",
+                      "children": [{
+                        "name": "01010",
+                        "description": "Description of mission 01010",
+                        "children": []
+                      }]
+                    }]
+                  },
+                  {
+                    "name": "011",
+                    "description": "Description of mission 011",
+                    "children": []
+                  }]
+                },
+                {
+                  "name": "02",
+                  "description": "Description of mission 02",
+                  "children": [{
+                    "name": "020",
+                    "description": "Description of mission 020",
+                    "children": [{
+                      "name": "0200",
+                      "description": "Description of mission 0200",
+                      "children": []
+                    },
+                    {
+                      "name": "0201",
+                      "description": "Description of mission 0201",
+                      "children": [{
+                        "name": "02010",
+                        "description": "Description of mission 02010",
+                        "children": [{
+                          "name": "020100",
+                          "description": "Description of mission 020100",
+                          "children": []
+                        },
+                        {
+                          "name": "020101",
+                          "description": "Description of mission 020101",
+                          "children": []
+                        }]
+                      },
+                      {
+                        "name": "02011",
+                        "description": "Description of mission 02011",
+                        "children": []
+                      },
+                      {
+                        "name": "02012",
+                        "description": "Description of mission 02012",
+                        "children": []
+                      },
+                      {
+                        "name": "02013",
+                        "description": "Description of mission 02013",
+                        "children": []
+                      }]
+                    }]
+                  }]
+                },{
+                  "name": "03000",
+                  "description": "Description of mission 03000",
+                  "children": [{
+                    "name": "030000",
+                    "description": "Description of mission 030000",
+                    "children": [{
+                      "name": "0300000",
+                      "description": "Description of mission 0300000",
+                      "children": []
+                    }]
+                  }]
+                }]
+              }]
+            },
+            {
+              "name": "031",
+              "description": "Description of mission 031",
+              "children": [{
+                "name": "0310",
+                "description": "Description of mission 0310",
+                "children": [{
+                  "name": "03100",
+                  "description": "Description of mission 03100",
+                  "children": []
+                },
+                {
+                  "name": "03101",
+                  "description": "Description of mission 03101",
+                  "children": []
+                },
+                {
+                  "name": "03102",
+                  "description": "Description of mission 03102",
+                  "children": []
+                }]
+              }]
+            },
+            {
+              "name": "032",
+              "description": "Description of mission 032",
+              "children": []
+            },
+            {
+              "name": "033",
+              "description": "Description of mission 033",
+              "children": [{
+                "name": "0330",
+                "description": "Description of mission 0330",
+                "children": [{
+                  "name": "03300",
+                  "description": "Description of mission 03300",
+                  "children": [{
+                    "name": "033000",
+                    "description": "Description of mission 033000",
+                    "children": []
+                  },
+                  {
+                    "name": "033001",
+                    "description": "Description of mission 033001",
+                    "children": []
+                  }]
+                },
+                {
+                  "name": "03301",
+                  "description": "Description of mission 03301",
+                  "children": [{
+                    "name": "033010",
+                    "description": "Description of mission 033010",
+                    "children": []
+                  },
+                  {
+                    "name": "033011",
+                    "description": "Description of mission 033011",
+                    "children": []
+                  },
+                  {
+                    "name": "033012",
+                    "description": "Description of mission 033012",
+                    "children": []
+                  },
+                  {
+                    "name": "033013",
+                    "description": "Description of mission 033013",
+                    "children": []
+                  },
+                  {
+                    "name": "033014",
+                    "description": "Description of mission 033014",
+                    "children": []
+                  }]
+                }]
+              }]
+            }]
+          },
+          {
+            "name": "039122",
+            "description": "Description of mission 039122",
+            "children": [{
+              "name": "0391220",
+              "description": "Description of mission 0391220",
+              "children": [{
+                "name": "03912200",
+                "description": "Description of mission 03912200",
+                "children": [{
+                  "name": "039122000",
+                  "description": "Description of mission 039122000",
+                  "children": []
+                }]
+              }]
+            },
+            {
+              "name": "0391221",
+              "description": "Description of mission 0391221",
+              "children": [{
+                "name": "03912210",
+                "description": "Description of mission 03912210",
+                "children": []
+              }]
+            },
+            {
+              "name": "0391222",
+              "description": "Description of mission 0391222",
+              "children": [{
+                "name": "03912220",
+                "description": "Description of mission 03912220",
+                "children": [{
+                  "name": "039122200",
+                  "description": "Description of mission 039122200",
+                  "children": [{
+                    "name": "0391222000",
+                    "description": "Description of mission 0391222000",
+                    "children": []
+                  }]
+                }]
+              }]
+            },
+            {
+              "name": "0391223",
+              "description": "Description of mission 0391223",
+              "children": [{
+                "name": "03912230",
+                "description": "Description of mission 03912230",
+                "children": []
+              },
+              {
+                "name": "03912231",
+                "description": "Description of mission 03912231",
+                "children": []
+              },
+              {
+                "name": "03912232",
+                "description": "Description of mission 03912232",
+                "children": []
+              },
+              {
+                "name": "03912233",
+                "description": "Description of mission 03912233",
+                "children": []
+              },
+              {
+                "name": "03912234",
+                "description": "Description of mission 03912234",
+                "children": []
+              },
+              {
+                "name": "03912235",
+                "description": "Description of mission 03912235",
+                "children": []
+              }]
+            }]
+          }]
+        }]
+      },
+      {
+        "name": "0392",
+        "description": "Description of mission 0392",
+        "children": []
+      }]
+    },
+    {
+      "name": "03A",
+      "description": "Description of mission 03A",
+      "children": []
+    }]
+  },
+  {
+    "name": "04",
+    "description": "Description of mission 04",
+    "children": [{
+      "name": "040",
+      "description": "Description of mission 040",
+      "children": [{
+        "name": "0400",
+        "description": "Description of mission 0400",
+        "children": []
+      },
+      {
+        "name": "0401",
+        "description": "Description of mission 0401",
+        "children": [{
+          "name": "04010",
+          "description": "Description of mission 04010",
+          "children": []
+        }]
+      },
+      {
+        "name": "0402",
+        "description": "Description of mission 0402",
+        "children": [{
+          "name": "04020",
+          "description": "Description of mission 04020",
+          "children": []
+        },
+        {
+          "name": "04021",
+          "description": "Description of mission 04021",
+          "children": [{
+            "name": "040210",
+            "description": "Description of mission 040210",
+            "children": []
+          }]
+        },
+        {
+          "name": "04022",
+          "description": "Description of mission 04022",
+          "children": []
+        }]
+      }]
+    }]
+  },
+  {
+    "name": "05",
+    "description": "Description of mission 05",
+    "children": [{
+      "name": "050",
+      "description": "Description of mission 050",
+      "children": []
+    },
+    {
+      "name": "051",
+      "description": "Description of mission 051",
+      "children": [{
+        "name": "0510",
+        "description": "Description of mission 0510",
+        "children": []
+      },
+      {
+        "name": "0511",
+        "description": "Description of mission 0511",
+        "children": [{
+          "name": "05110",
+          "description": "Description of mission 05110",
+          "children": []
+        },
+        {
+          "name": "05111",
+          "description": "Description of mission 05111",
+          "children": [{
+            "name": "051110",
+            "description": "Description of mission 051110",
+            "children": [{
+              "name": "0511100",
+              "description": "Description of mission 0511100",
+              "children": []
+            },
+            {
+              "name": "0511101",
+              "description": "Description of mission 0511101",
+              "children": [{
+                "name": "05111010",
+                "description": "Description of mission 05111010",
+                "children": []
+              }]
+            }]
+          },
+          {
+            "name": "051111",
+            "description": "Description of mission 051111",
+            "children": []
+          },
+          {
+            "name": "051112",
+            "description": "Description of mission 051112",
+            "children": []
+          },
+          {
+            "name": "051113",
+            "description": "Description of mission 051113",
+            "children": []
+          },
+          {
+            "name": "051114",
+            "description": "Description of mission 051114",
+            "children": []
+          }]
+        }]
+      }]
+    }]
+  },
+  {
+    "name": "06",
+    "description": "Description of mission 06",
+    "children": [{
+      "name": "060",
+      "description": "Description of mission 060",
+      "children": [
+      {
+        "name": "036",
+        "description": "Description of mission 036",
+        "children": [{
+          "name": "0363",
+          "description": "Description of mission 0363",
+          "children": [{
+            "name": "03630",
+            "description": "Description of mission 03630",
+            "children": [{
+              "name": "036300",
+              "description": "Description of mission 036300",
+              "children": [{
+                "name": "0363000",
+                "description": "Description of mission 0363000",
+                "children": []
+              }]
+            },
+            {
+              "name": "036301",
+              "description": "Description of mission 036301",
+              "children": []
+            },
+            {
+              "name": "036302",
+              "description": "Description of mission 036302",
+              "children": []
+            },
+            {
+              "name": "036303",
+              "description": "Description of mission 036303",
+              "children": [{
+                "name": "0363030",
+                "description": "Description of mission 0363030",
+                "children": []
+              },
+              {
+                "name": "0363031",
+                "description": "Description of mission 0363031",
+                "children": []
+              }]
+            },
+            {
+              "name": "036304",
+              "description": "Description of mission 036304",
+              "children": []
+            },
+            {
+              "name": "036305",
+              "description": "Description of mission 036305",
+              "children": []
+            }]
+          }]
+        },
+        {
+          "name": "0364",
+          "description": "Description of mission 0364",
+          "children": [{
+            "name": "03640",
+            "description": "Description of mission 03640",
+            "children": [{
+              "name": "036400",
+              "description": "Description of mission 036400",
+              "children": []
+            },
+            {
+              "name": "036401",
+              "description": "Description of mission 036401",
+              "children": []
+            },
+            {
+              "name": "036402",
+              "description": "Description of mission 036402",
+              "children": [{
+                "name": "0364020",
+                "description": "Description of mission 0364020",
+                "children": []
+              },
+              {
+                "name": "0364021",
+                "description": "Description of mission 0364021",
+                "children": []
+              }]
+            },
+            {
+              "name": "036403",
+              "description": "Description of mission 036403",
+              "children": [{
+                "name": "0364030",
+                "description": "Description of mission 0364030",
+                "children": [{
+                  "name": "03640300",
+                  "description": "Description of mission 03640300",
+                  "children": []
+                }]
+              },
+              {
+                "name": "0364031",
+                "description": "Description of mission 0364031",
+                "children": []
+              }]
+            }]
+          }]
+        },
+        {
+          "name": "0365",
+          "description": "Description of mission 0365",
+          "children": [{
+            "name": "03650",
+            "description": "Description of mission 03650",
+            "children": []
+          }]
+        },
+        {
+          "name": "0366",
+          "description": "Description of mission 0366",
+          "children": [{
+            "name": "03660",
+            "description": "Description of mission 03660",
+            "children": [{
+              "name": "036600",
+              "description": "Description of mission 036600",
+              "children": [{
+                "name": "0366000",
+                "description": "Description of mission 0366000",
+                "children": []
+              },
+              {
+                "name": "0366001",
+                "description": "Description of mission 0366001",
+                "children": [{
+                  "name": "03660010",
+                  "description": "Description of mission 03660010",
+                  "children": []
+                },
+                {
+                  "name": "03660011",
+                  "description": "Description of mission 03660011",
+                  "children": []
+                },
+                {
+                  "name": "03660012",
+                  "description": "Description of mission 03660012",
+                  "children": []
+                }]
+              },
+              {
+                "name": "0366002",
+                "description": "Description of mission 0366002",
+                "children": []
+              }]
+            }]
+          }]
+        }]
+      }]
+    },
+    {
+      "name": "061",
+      "description": "Description of mission 061",
+      "children": [{
+        "name": "0610",
+        "description": "Description of mission 0610",
+        "children": [{
+          "name": "06100",
+          "description": "Description of mission 06100",
+          "children": [{
+            "name": "061000",
+            "description": "Description of mission 061000",
+            "children": [{
+              "name": "0610000",
+              "description": "Description of mission 0610000",
+              "children": []
+            },
+            {
+              "name": "0610001",
+              "description": "Description of mission 0610001",
+              "children": []
+            },
+            {
+              "name": "0610002",
+              "description": "Description of mission 0610002",
+              "children": []
+            }]
+          }]
+        },
+        {
+          "name": "06101",
+          "description": "Description of mission 06101",
+          "children": [{
+            "name": "061010",
+            "description": "Description of mission 061010",
+            "children": [{
+              "name": "0610100",
+              "description": "Description of mission 0610100",
+              "children": []
+            },
+            {
+              "name": "0610101",
+              "description": "Description of mission 0610101",
+              "children": []
+            },
+            {
+              "name": "0610102",
+              "description": "Description of mission 0610102",
+              "children": []
+            },
+            {
+              "name": "0610103",
+              "description": "Description of mission 0610103",
+              "children": []
+            },
+            {
+              "name": "0610104",
+              "description": "Description of mission 0610104",
+              "children": [{
+                "name": "06101040",
+                "description": "Description of mission 06101040",
+                "children": []
+              },
+              {
+                "name": "06101041",
+                "description": "Description of mission 06101041",
+                "children": []
+              },
+              {
+                "name": "06101042",
+                "description": "Description of mission 06101042",
+                "children": []
+              }]
+            }]
+          }]
+        },
+        {
+          "name": "06102",
+          "description": "Description of mission 06102",
+          "children": [{
+            "name": "061020",
+            "description": "Description of mission 061020",
+            "children": [{
+              "name": "0610200",
+              "description": "Description of mission 0610200",
+              "children": []
+            },
+            {
+              "name": "0610201",
+              "description": "Description of mission 0610201",
+              "children": []
+            },
+            {
+              "name": "0610202",
+              "description": "Description of mission 0610202",
+              "children": [{
+                "name": "06102020",
+                "description": "Description of mission 06102020",
+                "children": []
+              },
+              {
+                "name": "06102021",
+                "description": "Description of mission 06102021",
+                "children": []
+              },
+              {
+                "name": "06102022",
+                "description": "Description of mission 06102022",
+                "children": []
+              },
+              {
+                "name": "06102023",
+                "description": "Description of mission 06102023",
+                "children": []
+              }]
+            }]
+          }]
+        },
+        {
+          "name": "06103",
+          "description": "Description of mission 06103",
+          "children": [{
+            "name": "061030",
+            "description": "Description of mission 061030",
+            "children": [{
+              "name": "0610300",
+              "description": "Description of mission 0610300",
+              "children": [{
+                "name": "06103000",
+                "description": "Description of mission 06103000",
+                "children": [{
+                  "name": "061030000",
+                  "description": "Description of mission 061030000",
+                  "children": []
+                }]
+              }]
+            },
+            {
+              "name": "0610301",
+              "description": "Description of mission 0610301",
+              "children": [{
+                "name": "06103010",
+                "description": "Description of mission 06103010",
+                "children": []
+              }]
+            }]
+          }]
+        },
+        {
+          "name": "06104",
+          "description": "Description of mission 06104",
+          "children": []
+        },
+        {
+          "name": "06105",
+          "description": "Description of mission 06105",
+          "children": [{
+            "name": "061050",
+            "description": "Description of mission 061050",
+            "children": []
+          },
+          {
+            "name": "061051",
+            "description": "Description of mission 061051",
+            "children": []
+          },
+          {
+            "name": "061052",
+            "description": "Description of mission 061052",
+            "children": []
+          },
+          {
+            "name": "061053",
+            "description": "Description of mission 061053",
+            "children": [{
+              "name": "0610530",
+              "description": "Description of mission 0610530",
+              "children": []
+            }]
+          },
+          {
+            "name": "061054",
+            "description": "Description of mission 061054",
+            "children": []
+          },
+          {
+            "name": "061055",
+            "description": "Description of mission 061055",
+            "children": []
+          }]
+        },
+        {
+          "name": "06106",
+          "description": "Description of mission 06106",
+          "children": []
+        }]
+      },
+      {
+        "name": "0611",
+        "description": "Description of mission 0611",
+        "children": []
+      },
+      {
+        "name": "0612",
+        "description": "Description of mission 0612",
+        "children": [{
+          "name": "06120",
+          "description": "Description of mission 06120",
+          "children": [{
+            "name": "061200",
+            "description": "Description of mission 061200",
+            "children": [{
+              "name": "0612000",
+              "description": "Description of mission 0612000",
+              "children": []
+            },
+            {
+              "name": "0612001",
+              "description": "Description of mission 0612001",
+              "children": [{
+                "name": "06120010",
+                "description": "Description of mission 06120010",
+                "children": [{
+                  "name": "061200100",
+                  "description": "Description of mission 061200100",
+                  "children": [{
+                    "name": "0612001000",
+                    "description": "Description of mission 0612001000",
+                    "children": [{
+                      "name": "0360",
+                      "description": "Description of mission 0360",
+                      "children": []
+                    }]
+                  },
+                  {
+                    "name": "0612001001",
+                    "description": "Description of mission 0612001001",
+                    "children": [{
+                      "name": "08",
+                      "description": "Description of mission 08",
+                      "children": [{
+                        "name": "080",
+                        "description": "Description of mission 080",
+                        "children": []
+                      },
+                      {
+                        "name": "081",
+                        "description": "Description of mission 081",
+                        "children": []
+                      },
+                      {
+                        "name": "082",
+                        "description": "Description of mission 082",
+                        "children": [{
+                          "name": "0820",
+                          "description": "Description of mission 0820",
+                          "children": [{
+                            "name": "08200",
+                            "description": "Description of mission 08200",
+                            "children": []
+                          },
+                          {
+                            "name": "08201",
+                            "description": "Description of mission 08201",
+                            "children": []
+                          },
+                          {
+                            "name": "08202",
+                            "description": "Description of mission 08202",
+                            "children": []
+                          }]
+                        }]
+                      },
+                      {
+                        "name": "083",
+                        "description": "Description of mission 083",
+                        "children": [{
+                          "name": "0830",
+                          "description": "Description of mission 0830",
+                          "children": [{
+                            "name": "08300",
+                            "description": "Description of mission 08300",
+                            "children": []
+                          },
+                          {
+                            "name": "08301",
+                            "description": "Description of mission 08301",
+                            "children": []
+                          },
+                          {
+                            "name": "08302",
+                            "description": "Description of mission 08302",
+                            "children": [{
+                              "name": "083020",
+                              "description": "Description of mission 083020",
+                              "children": []
+                            }]
+                          },
+                          {
+                            "name": "08303",
+                            "description": "Description of mission 08303",
+                            "children": [{
+                              "name": "083030",
+                              "description": "Description of mission 083030",
+                              "children": [{
+                                "name": "0830300",
+                                "description": "Description of mission 0830300",
+                                "children": [{
+                                  "name": "08303000",
+                                  "description": "Description of mission 08303000",
+                                  "children": []
+                                }]
+                              }]
+                            }]
+                          }]
+                        }]
+                      },
+                      {
+                        "name": "084",
+                        "description": "Description of mission 084",
+                        "children": [{
+                          "name": "0840",
+                          "description": "Description of mission 0840",
+                          "children": [{
+                            "name": "08400",
+                            "description": "Description of mission 08400",
+                            "children": [{
+                              "name": "084000",
+                              "description": "Description of mission 084000",
+                              "children": []
+                            },
+                            {
+                              "name": "084001",
+                              "description": "Description of mission 084001",
+                              "children": []
+                            },
+                            {
+                              "name": "084002",
+                              "description": "Description of mission 084002",
+                              "children": []
+                            },
+                            {
+                              "name": "084003",
+                              "description": "Description of mission 084003",
+                              "children": []
+                            },
+                            {
+                              "name": "084004",
+                              "description": "Description of mission 084004",
+                              "children": [{
+                                "name": "0361",
+                                "description": "Description of mission 0361",
+                                "children": [{
+                                  "name": "03610",
+                                  "description": "Description of mission 03610",
+                                  "children": []
+                                },
+                                {
+                                  "name": "03611",
+                                  "description": "Description of mission 03611",
+                                  "children": [{
+                                    "name": "036110",
+                                    "description": "Description of mission 036110",
+                                    "children": [{
+                                      "name": "0361100",
+                                      "description": "Description of mission 0361100",
+                                      "children": []
+                                    },
+                                    {
+                                      "name": "0361101",
+                                      "description": "Description of mission 0361101",
+                                      "children": [{
+                                        "name": "03611010",
+                                        "description": "Description of mission 03611010",
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "03611011",
+                                        "description": "Description of mission 03611011",
+                                        "children": []
+                                      }]
+                                    },
+                                    {
+                                      "name": "0361102",
+                                      "description": "Description of mission 0361102",
+                                      "children": [{
+                                        "name": "03611020",
+                                        "description": "Description of mission 03611020",
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "03611021",
+                                        "description": "Description of mission 03611021",
+                                        "children": []
+                                      },
+                                      {
+                                        "name": "03611022",
+                                        "description": "Description of mission 03611022",
+                                        "children": []
+                                      }]
+                                    }]
+                                  },
+                                  {
+                                    "name": "036111",
+                                    "description": "Description of mission 036111",
+                                    "children": []
+                                  }]
+                                }]
+                              },
+                              {
+                                "name": "0362",
+                                "description": "Description of mission 0362",
+                                "children": [{
+                                  "name": "03620",
+                                  "description": "Description of mission 0362",
+                                  "children": []
+                                }]
+                              }]
+                            }]
+                          }]
+                        }]
+                      },
+                      {
+                        "name": "085",
+                        "description": "Description of mission 085",
+                        "children": []
+                      }]
+                    }]
+                  }]
+                },
+                {
+                  "name": "061200101",
+                  "description": "Description of mission 061200101",
+                  "children": [{
+                    "name": "0612001010",
+                    "description": "Description of mission 0612001010",
+                    "children": []
+                  },
+                  {
+                    "name": "0612001011",
+                    "description": "Description of mission 0612001011",
+                    "children": []
+                  }]
+                },
+                {
+                  "name": "061200102",
+                  "description": "Description of mission 061200102",
+                  "children": [{
+                    "name": "0612001020",
+                    "description": "Description of mission 0612001020",
+                    "children": []
+                  },
+                  {
+                    "name": "0612001021",
+                    "description": "Description of mission 0612001021",
+                    "children": [{
+                      "name": "06120010210",
+                      "description": "Description of mission 06120010210",
+                      "children": [{
+                        "name": "061200102100",
+                        "description": "Description of mission 061200102100",
+                        "children": []
+                      }]
+                    }]
+                  }]
+                }]
+              },
+              {
+                "name": "06120011",
+                "description": "Description of mission 06120011",
+                "children": []
+              },
+              {
+                "name": "06120012",
+                "description": "Description of mission 06120012",
+                "children": [{
+                  "name": "061200120",
+                  "description": "Description of mission 061200120",
+                  "children": []
+                },
+                {
+                  "name": "061200121",
+                  "description": "Description of mission 061200121",
+                  "children": [{
+                    "name": "0612001210",
+                    "description": "Description of mission 0612001210",
+                    "children": [{
+                      "name": "06120012100",
+                      "description": "Description of mission 06120012100",
+                      "children": []
+                    },
+                    {
+                      "name": "06120012101",
+                      "description": "Description of mission 06120012101",
+                      "children": [{
+                        "name": "061200121010",
+                        "description": "Description of mission 061200121010",
+                        "children": [{
+                          "name": "0612001210100",
+                          "description": "Description of mission 0612001210100",
+                          "children": []
+                        },
+                        {
+                          "name": "0612001210101",
+                          "description": "Description of mission 0612001210101",
+                          "children": []
+                        },
+                        {
+                          "name": "0612001210102",
+                          "description": "Description of mission 0612001210102",
+                          "children": []
+                        },
+                        {
+                          "name": "0612001210103",
+                          "description": "Description of mission 0612001210103",
+                          "children": []
+                        }]
+                      },
+                      {
+                        "name": "061200121011",
+                        "description": "Description of mission 061200121011",
+                        "children": [{
+                          "name": "0612001210110",
+                          "description": "Description of mission 0612001210110",
+                          "children": []
+                        }]
+                      }]
+                    }]
+                  }]
+                }]
+              }]
+            },
+            {
+              "name": "0612002",
+              "description": "Description of mission 0612002",
+              "children": [{
+                "name": "0612002",
+                "description": "Description of mission 0612002",
+                "children": []
+              }]
+            },
+            {
+              "name": "0612003",
+              "description": "Description of mission 0612003",
+              "children": [{
+                "name": "0612003",
+                "description": "Description of mission 0612003",
+                "children": []
+              }]
+            },
+            {
+              "name": "0612004",
+              "description": "Description of mission 0612004",
+              "children": []
+            },
+            {
+              "name": "0612005",
+              "description": "Description of mission 0612005",
+              "children": []
+            }]
+          }]
+        },
+        {
+          "name": "06121",
+          "description": "Description of mission 06121",
+          "children": [{
+            "name": "061210",
+            "description": "Description of mission 061210",
+            "children": [{
+              "name": "0612100",
+              "description": "Description of mission 0612100",
+              "children": []
+            },
+            {
+              "name": "0612101",
+              "description": "Description of mission 0612101",
+              "children": []
+            },
+            {
+              "name": "0612102",
+              "description": "Description of mission 0612102",
+              "children": []
+            }]
+          }]
+        },
+        {
+          "name": "06122",
+          "description": "Description of mission 06122",
+          "children": [{
+            "name": "061220",
+            "description": "Description of mission 061220",
+            "children": [{
+              "name": "0612200",
+              "description": "Description of mission 0612200",
+              "children": []
+            },
+            {
+              "name": "0612201",
+              "description": "Description of mission 0612201",
+              "children": [{
+                "name": "0612201",
+                "description": "Description of mission 0612201",
+                "children": []
+              }]
+            },
+            {
+              "name": "0612202",
+              "description": "Description of mission 0612202",
+              "children": []
+            },
+            {
+              "name": "0612203",
+              "description": "Description of mission 0612203",
+              "children": [{
+                "name": "06122030",
+                "description": "Description of mission 06122030",
+                "children": [
+                {
+                  "name": "09",
+                  "description": "Description of mission 09",
+                  "children": [{
+                    "name": "090",
+                    "description": "Description of mission 090",
+                    "children": [{
+                      "name": "0900",
+                      "description": "Description of mission 0900",
+                      "children": [{
+                        "name": "09000",
+                        "description": "Description of mission 09000",
+                        "children": [{
+                          "name": "090000",
+                          "description": "Description of mission 090000",
+                          "children": []
+                        }]
+                      }]
+                    }]
+                  }]
+                },
+                {
+                  "name": "0A",
+                  "description": "Description of mission 0A",
+                  "children": [{
+                    "name": "0A0",
+                    "description": "Description of mission 0A0",
+                    "children": [{
+                      "name": "0A00",
+                      "description": "Description of mission 0A00",
+                      "children": []
+                    },
+                    {
+                      "name": "0A01",
+                      "description": "Description of mission 0A01",
+                      "children": [{
+                        "name": "0A010",
+                        "description": "Description of mission 0A010",
+                        "children": []
+                      }]
+                    },
+                    {
+                      "name": "0A02",
+                      "description": "Description of mission 0A02",
+                      "children": []
+                    },
+                    {
+                      "name": "0A03",
+                      "description": "Description of mission 0A03",
+                      "children": []
+                    }]
+                  }]
+                }]
+              },
+              {
+                "name": "06122031",
+                "description": "Description of mission 06122031",
+                "children": [{
+                  "name": "061220310",
+                  "description": "Description of mission 061220310",
+                  "children": [{
+                    "name": "0612203100",
+                    "description": "Description of mission 0612203100",
+                    "children": []
+                  }]
+                }]
+              },
+              {
+                "name": "06122032",
+                "description": "Description of mission 06122032",
+                "children": [{
+                  "name": "061220320",
+                  "description": "Description of mission 061220320",
+                  "children": []
+                }]
+              }]
+            }]
+          }]
+        },
+        {
+          "name": "06123",
+          "description": "Description of mission 06123",
+          "children": [{
+            "name": "061230",
+            "description": "Description of mission 061230",
+            "children": [{
+              "name": "0612300",
+              "description": "Description of mission 0612300",
+              "children": []
+            },
+            {
+              "name": "0612301",
+              "description": "Description of mission 0612301",
+              "children": []
+            },
+            {
+              "name": "0612302",
+              "description": "Description of mission 0612302",
+              "children": []
+            }]
+          }]
+        },
+        {
+          "name": "06124",
+          "description": "Description of mission 06124",
+          "children": []
+        }]
+      }]
+    }]
+  }]
+}

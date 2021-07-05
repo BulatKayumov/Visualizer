@@ -10,7 +10,6 @@ const d3 = require('d3')
 
 const createGraphBtn = document.getElementById('createGraphBtn')
 createGraphBtn.addEventListener('click', function(){
-  // ipc.send('createGraphBtnClicked')
   ShowImportGraphModal();
 })
 
@@ -213,8 +212,8 @@ verticalSpacingInputRange.oninput = function() {
 }
 
 var dagMethods = [new Option("Barycenters", "Barycenters"),
-                  new Option("Centering", "Centering"),
                   new Option("Clusters", "Clusters"),
+                  new Option("Equal Distribution", "Equal Distribution"),
                   new Option("Force Simulation", "Force Simulation")];
 
 var treeMethods = [new Option("Tidy", "Tidy"),

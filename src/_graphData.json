@@ -3,13 +3,13 @@
     {
       "id": 0,
       "name": "Zero",
-      "description": "Descriptiion of mission 'Zero'",
+      "description": ["Descriptiion of mission 'Zero'", "QAAQQ"],
       "nextNodes": [1, 2, 3]
     },
     {
       "id": 1,
       "name": "One",
-      "description": "Descriptiion of mission 'One'",
+      "description": {"qwe" : "Descriptiion of mission 'One'", "asd": "zxc"},
       "nextNodes": [4, 5]
     },
     {
